@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">GotCha</string>
+    <string name="kakao_app_key">ec10b6acdf0711dda6cf9ad61c0cecd0</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
 </resources>

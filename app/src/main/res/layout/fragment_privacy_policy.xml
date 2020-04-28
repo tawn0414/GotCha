@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout style="@style/linear_m_w_10"
+        android:background="#FFFFFF"
+        >
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <!-- 최상단 타이틀 -->
+            <LinearLayout style="@style/linear_m_w_10">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="@string/policy_title_1"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/text_B"
+                    android:text="@string/policy_title_2" />
+
+                <TextView
+                    style="@style/text_B"
+                    android:text="@string/policy_title_3" />
+            </LinearLayout>
+            <!--개요 및 목차-->
+            <LinearLayout style="@style/linear_m_w_10">
+
+                <TextView
+                    style="@style/text_B"
+                    android:text="@string/policy_title_4" />
+
+                <TextView
+                    style="@style/text_B"
+                    android:text="@string/policy_title_5" />
+
+                <LinearLayout style="@style/linear_m_w_10">
+
+                    <TextView
+                        style="@style/text_S"
+                        android:text="@string/policy_index_1" />
+
+                    <TextView
+                        style="@style/text_S"
+                        android:text="@string/policy_index_2" />
+
+                    <TextView
+                        style="@style/text_S"
+                        android:text="@string/policy_index_3" />
+
+                    <TextView
+                        style="@style/text_S"
+                        android:text="@string/policy_index_4" />
+
+                    <TextView
+                        style="@style/text_S"
+                        android:text="@string/policy_index_5" />
+
+                    <TextView
+                        style="@style/text_S"
+                        android:text="@string/policy_index_6" />
+
+                    <TextView
+                        style="@style/text_S"
+                        android:text="@string/policy_index_7" />
+
+                    <TextView
+                        style="@style/text_S"
+                        android:text="@string/policy_index_8" />
+
+                    <TextView
+                        style="@style/text_S"
+                        android:text="@string/policy_index_9" />
+
+                    <TextView
+                        style="@style/text_S"
+                        android:text="@string/policy_index_10" />
+
+                </LinearLayout>
+            </LinearLayout>
+            <!-- 1. 개인정보처리방침의 의의 -->
+            <LinearLayout style="@style/linear_m_w_10">
+
+                <TextView
+                    style="@style/text_L"
+                    android:text="@string/policy_index_1" />
+
+                <TextView
+                    style="@style/text_B_b"
+                    android:text="@string/policy_1_1" />
+
+                <TextView
+                    style="@style/text_B"
+                    android:text="@string/policy_1_2" />
+
+                <TextView
+                    style="@style/text_B"
+                    android:text="@string/policy_1_3" />
+
+                <LinearLayout style="@style/linear_m_w_5">
+
+                    <TextView
+                        style="@style/text_B"
+                        android:text="@string/policy_1_4" />
+
+                    <TextView
+                        style="@style/text_B"
+                        android:text="@string/policy_1_5" />
+
+                    <TextView
+                        style="@style/text_B"
+                        android:text="@string/policy_1_6" />
+
+                    <TextView
+                        style="@style/text_B"
+                        android:text="@string/policy_1_7" />
+                </LinearLayout>
+            </LinearLayout>
+            <!-- 2. 수집하는 개인정보 (필수 안내사항) -->
+            <LinearLayout style="@style/linear_m_w_10">
+
+                <TextView
+                    style="@style/text_L"
+                    android:text="@string/policy_index_2" />
+
+                <TextView
+                    style="@style/text_B_b"
+                    android:text="@string/policy_2_1" />
+
+                <TextView
+                    style="@style/text_B_b"
+                    android:text="@string/policy_2_2" />
+
+                <TextView
+                    style="@style/text_B_b"
+                    android:text="@string/policy_2_3" />
+
+                <LinearLayout style="@style/linear_m_w_5">
+
+                    <TextView
+                        style="@style/text_B"
+                        android:text="@string/policy_2_4" />
+
+                    <TextView
+                        style="@style/text_B"
+                        android:text="@string/policy_2_5" />
+                </LinearLayout>
+
+                <TextView
+                    style="@style/text_B_b"
+                    android:text="@string/policy_2_6" />
+
+                <TextView
+                    style="@style/text_B"
+                    android:text="@string/policy_2_7" />
+
+                <TextView
+                    style="@style/text_B_b"
+                    android:text="@string/policy_2_8" />
+
+                <TextView
+                    style="@style/text_B"
+                    android:text="@string/policy_2_9" />
+
+                <TextView
+                    style="@style/text_B"
+                    android:text="@string/policy_2_10" />
+
+                <TextView
+                    style="@style/text_B_b"
+                    android:text="@string/policy_2_11" />
+
+                <LinearLayout style="@style/linear_m_w_5">
+
+                    <TextView
+                        style="@style/text_B"
+                        android:text="@string/policy_2_12" />
+
+                    <TextView
+                        style="@style/text_B"
+                        android:text="@string/policy_2_13" />
+
+                    <TextView
+                        style="@style/text_B"
+                        android:text="@string/policy_2_14" />
+
+                    <TextView
+                        style="@style/text_B"
+                        android:text="@string/policy_2_15" />
+
+                    <TextView
+                        style="@style/text_B"
+                        android:text="@string/policy_2_16" />
+                </LinearLayout>
+            </LinearLayout>
+            <!-- 3. 수집한 개인정보의 이용 (필수 안내사항)-->
+            <LinearLayout style="@style/linear_m_w_10">
+
+                <TextView
+                    style="@style/text_L"
+                    android:text="@string/policy_index_3" />
+
+                <TextView
+                    style="@style/text_B_b"
+                    android:text="@string/policy_3_1" />
+
+                <LinearLayout style="@style/linear_m_w_5">
+
+                    <TextView
+                        style="@style/text_B"
+                        android:text="@string/policy_3_2" />
+
+                    <TextView
+                        style="@style/text_B"
+                        android:text="@string/policy_3_3" />
+
+                    <TextView
+                        style="@style/text_B"
+                        android:text="@string/policy_3_4" />
+
+                    <TextView
+                        style="@style/text_B"
+                        android:text="@string/policy_3_5" />
+
+                    <TextView
+                        style="@style/text_B"
+                        android:text="@string/policy_3_6" />
+
+                    <TextView
+                        style="@style/text_B"
+                        android:text="@string/policy_3_7" />
+
+                    <TextView
+                        style="@style/text_B"
+                        android:text="@string/policy_3_8" />
+                </LinearLayout>
+            </LinearLayout>
+            <!-- 4. 개인정보의 제공 및 위탁 -->
+            <LinearLayout style="@style/linear_m_w_10">
+
+                <TextView
+                    style="@style/text_L"
+                    android:text="@string/policy_index_4" />
+
+                <TextView
+                    style="@style/text_B_b"
+                    android:text="@string/policy_4_1" />
+
+                <TextView
+                    style="@style/text_B"
+                    android:text="@string/policy_4_2" />
+
+                <TextView
+                    style="@style/text_B_b"
+                    android:text="@string/policy_4_3" />
+
+                <TextView
+                    style="@style/text_B"
+                    android:text="@string/policy_4_4" />
+
+                <TextView
+                    style="@style/text_B_b"
+                    android:text="@string/policy_4_5" />
+
+                <TextView
+                    style="@style/text_B"
+                    android:text="@string/policy_4_6" />
+            </LinearLayout>
+            <!-- 5. 개인정보의 파기 -->
+            <LinearLayout style="@style/linear_m_w_10">
+
+                <TextView
+                    style="@style/text_L"
+                    android:text="@string/policy_index_5" />
+
+                <TextView
+                    style="@style/text_B_b"
+                    android:text="@string/policy_5_1" />
+
+                <TextView
+                    style="@style/text_B"
+                    android:text="@string/policy_5_2" />
+
+                <TextView
+                    style="@style/text_B_b"
+                    android:text="@string/policy_5_3" />
+
+                <TextView
+                    style="@style/text_B"
+                    android:text="@string/policy_5_4" />
+
+                <TextView
+                    style="@style/text_B"
+                    android:text="@string/policy_5_5" />
+
+                <TextView
+                    style="@style/text_B_b"
+                    android:text="@string/policy_5_6" />
+
+                <LinearLayout style="@style/linear_m_w_5">
+
+                    <TextView
+                        style="@style/text_B"
+                        android:text="@string/policy_5_7" />
+
+                    <TextView
+                        style="@style/text_B"
+                        android:text="@string/policy_5_8" />
+
+                    <TextView
+                        style="@style/text_B"
+                        android:text="@string/policy_5_9" />
+                </LinearLayout>
+
+                <TextView
+                    style="@style/text_B_b"
+                    android:text="@string/policy_5_10" />
+
+                <TextView
+                    style="@style/text_B_b"
+                    android:text="@string/policy_5_11" />
+
+                <TextView
+                    style="@style/text_B"
+                    android:text="@string/policy_5_12" />
+
+                <TextView
+                    style="@style/text_B_b"
+                    android:text="@string/policy_5_13" />
+            </LinearLayout>
+            <!-- 6. 이용자 및 법정대리인의 권리와 행사 방법 -->
+            <LinearLayout style="@style/linear_m_w_10">
+
+                <TextView
+                    style="@style/text_L"
+                    android:text="@string/policy_index_6" />
+
+                <TextView
+                    style="@style/text_B"
+                    android:text="@string/policy_6_1" />
+
+                <TextView
+                    style="@style/text_B"
+                    android:text="@string/policy_6_2" />
+
+                <TextView
+                    style="@style/text_B"
+                    android:text="@string/policy_6_4" />
+            </LinearLayout>
+            <!-- 7. 개인정보보호를 위한 네이버의 노력 -->
+            <LinearLayout style="@style/linear_m_w_10">
+
+                <TextView
+                    style="@style/text_L"
+                    android:text="@string/policy_index_7" />
+
+                <TextView
+                    style="@style/text_B_b"
+                    android:text="@string/policy_7_1" />
+
+                <TextView
+                    style="@style/text_B_b"
+                    android:text="@string/policy_7_2" />
+
+                <TextView
+                    style="@style/text_B"
+                    android:text="@string/policy_7_3" />
+
+                <TextView
+                    style="@style/text_B_b"
+                    android:text="@string/policy_7_4" />
+
+                <TextView
+                    style="@style/text_B"
+                    android:text="@string/policy_7_5" />
+
+                <TextView
+                    style="@style/text_B_b"
+                    android:text="@string/policy_7_6" />
+
+                <TextView
+                    style="@style/text_B"
+                    android:text="@string/policy_7_7" />
+
+                <TextView
+                    style="@style/text_B_b"
+                    android:text="@string/policy_7_8" />
+
+                <TextView
+                    style="@style/text_B"
+                    android:text="@string/policy_7_9" />
+
+                <TextView
+                    style="@style/text_B_b"
+                    android:text="@string/policy_7_10" />
+
+                <TextView
+                    style="@style/text_B"
+                    android:text="@string/policy_7_11" />
+
+                <TextView
+                    style="@style/text_B_b"
+                    android:text="@string/policy_7_12" />
+
+                <TextView
+                    style="@style/text_B"
+                    android:text="@string/policy_7_13" />
+            </LinearLayout>
+            <!-- 8. 개인정보 보호책임자 및 담당자 안내 -->
+            <LinearLayout style="@style/linear_m_w_10">
+
+                <TextView
+                    style="@style/text_L"
+                    android:text="@string/policy_index_8" />
+
+                <TextView
+                    style="@style/text_B"
+                    android:text="@string/policy_8_1" />
+
+                <LinearLayout style="@style/linear_m_w_10">
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#999999"
+                        android:padding="5dp"
+                        android:stretchColumns="*">
+
+                        <TableRow
+                            android:gravity="center_horizontal"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/text_B"
+                                android:text="이름 : 백승재" />
+
+                            <TextView
+                                style="@style/text_B"
+                                android:text="전화 : 1588-3820" />
+                        </TableRow>
+
+                        <TableRow
+                            android:gravity="center_horizontal"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/text_B"
+                                android:text="이름 : 백승재" />
+
+                            <TextView
+                                style="@style/text_B"
+                                android:text="전화 : 1588-3820" />
+                        </TableRow>
+
+                        <TableRow
+                            android:gravity="center_horizontal"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/text_B"
+                                android:text="이름 : 백승재" />
+
+                            <TextView
+                                style="@style/text_B"
+                                android:text="전화 : 1588-3820" />
+                        </TableRow>
+                    </TableLayout>
+                </LinearLayout>
+
+                <TextView
+                    style="@style/text_B"
+                    android:text="@string/policy_8_2" />
+
+                <LinearLayout style="@style/linear_m_w_5">
+
+                    <TextView
+                        style="@style/text_B"
+                        android:text="@string/policy_8_3" />
+
+                    <TextView
+                        style="@style/text_B"
+                        android:text="@string/policy_8_4" />
+
+                    <TextView
+                        style="@style/text_B"
+                        android:text="@string/policy_8_5" />
+                </LinearLayout>
+            </LinearLayout>
+            <!-- 9. 본 개인정보처리방침의 적용 범위 -->
+            <LinearLayout style="@style/linear_m_w_10">
+
+                <TextView
+                    style="@style/text_L"
+                    android:text="@string/policy_index_9" />
+
+                <LinearLayout style="@style/linear_m_w_5">
+
+                    <TextView
+                        style="@style/text_B"
+                        android:text="@string/policy_9_1" />
+
+                    <TextView
+                        style="@style/text_B"
+                        android:text="@string/policy_9_2" />
+                </LinearLayout>
+            </LinearLayout>
+            <!-- 10. 개정 전 고지 의무 -->
+            <LinearLayout style="@style/linear_m_w_10">
+
+                <TextView
+                    style="@style/text_L"
+                    android:text="@string/policy_index_10" />
+
+                <TextView
+                    style="@style/text_B"
+                    android:text="@string/policy_10_1" />
+
+                <TextView
+                    style="@style/text_B"
+                    android:text="@string/policy_10_2" />
+
+                <LinearLayout style="@style/linear_m_w_5">
+
+                    <TextView
+                        style="@style/text_B"
+                        android:text="@string/policy_10_3" />
+
+                    <TextView
+                        style="@style/text_B"
+                        android:text="@string/policy_10_4" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    </LinearLayout>
+</FrameLayout>
