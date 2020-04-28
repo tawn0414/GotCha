@@ -47,13 +47,6 @@ public class MainActivity extends AppCompatActivity {
         bundle.putString("strGender", intent.getStringExtra("gender"));
         bundle.putString("strBirthday", intent.getStringExtra("birthday"));
         memberInfo.setArguments(bundle);
-/*
-        Map<String,String> map = new HashMap<String,String>();
-        map.put("content","홀홀");
-        Task networkTask = new Task();
-        networkTask.execute(map);
-        Log.d("dbtest", "1번까지 성공");
-*/
 
         FragmentTransaction transaction;
         transaction = fragmentManager.beginTransaction();
@@ -134,5 +127,16 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }).show();
     }
+
+    public void onClickBuy(View v){
+        Toast.makeText(this,"내차사기",Toast.LENGTH_SHORT).show();
+    }
+    public void onClickSell(View v){
+        Toast.makeText(this,"내차팔기",Toast.LENGTH_SHORT).show();
+    }
+    public void onClickCommunity(View v){
+        Toast.makeText(this,"커뮤니티",Toast.LENGTH_SHORT).show();
+    }
+
 
 }

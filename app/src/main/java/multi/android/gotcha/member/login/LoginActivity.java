@@ -172,7 +172,7 @@ public class LoginActivity extends AppCompatActivity {
                         map.put("kakaoNo", kakaoNo);
                         networkTask = new Task();
                         networkTask.execute(map);
-                        SystemClock.sleep(1000);
+                        SystemClock.sleep(300);
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         intent.putExtra("name", result.getNickname());
                         intent.putExtra("profile", result.getProfileImagePath());
