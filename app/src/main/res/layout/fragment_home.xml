@@ -40,6 +40,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/test"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="직거래 내차"
@@ -130,7 +131,7 @@
                         android:layout_height="wrap_content"
                         android:text="차톡 커뮤니티"
                         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                        android:textColor="@color/colorRed"
+                        android:textColor="@color/colorGreen"
                         android:textStyle="bold" />
 
                 </LinearLayout>

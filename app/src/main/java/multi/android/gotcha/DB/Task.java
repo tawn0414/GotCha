@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 
+import java.util.List;
 import java.util.Map;
 
 public class Task extends AsyncTask<Map<String, String>, Integer, String> {
@@ -18,7 +19,7 @@ public class Task extends AsyncTask<Map<String, String>, Integer, String> {
         String result = "";
         Gson gson = new Gson();
         switch (method){
-            case "SearchIdInKakao":
+            case "searchIdInKakao":
                 result = SearchIdInKakao(maps[0]);
                 MemberVO data = gson.fromJson(result, MemberVO.class);
                 setResult(data.getStatus());

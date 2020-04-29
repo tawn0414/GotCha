@@ -5,13 +5,22 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.bumptech.glide.Glide;
+import com.google.android.material.navigation.NavigationView;
 import com.kakao.auth.ApiErrorCode;
 import com.kakao.network.ErrorResult;
 import com.kakao.usermgmt.UserManagement;
@@ -28,30 +37,85 @@ import multi.android.gotcha.member.login.MemberInfo;
 public class MainActivity extends AppCompatActivity {
     MemberInfo memberInfo = new MemberInfo();
     Home home = new Home();
-    String kakaoNo ="";
+    String kakaoNo = "";
+    String name = "";
+    String profile = "";
+    String email = "";
+    String ageRange = "";
+    String gender = "";
+    String birthday = "";
     Intent intent;
+    DrawerLayout mainLayout;
+    ActionBarDrawerToggle toggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         intent = getIntent();
         kakaoNo = intent.getStringExtra("kakaoNo");
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        Bundle bundle = new Bundle();
-        bundle.putString("strName", intent.getStringExtra("name"));
-        bundle.putString("strProfile", intent.getStringExtra("profile"));
-        bundle.putString("strEmail", intent.getStringExtra("email"));
-        bundle.putString("strAgeRange", intent.getStringExtra("ageRange"));
-        bundle.putString("strGender", intent.getStringExtra("gender"));
-        bundle.putString("strBirthday", intent.getStringExtra("birthday"));
-        memberInfo.setArguments(bundle);
+        name = intent.getStringExtra("name");
+        profile = intent.getStringExtra("profile");
+        email = intent.getStringExtra("email");
+        ageRange = intent.getStringExtra("ageRange");
+        gender = intent.getStringExtra("gender");
+        birthday = intent.getStringExtra("birthday");
 
+        mainLayout = findViewById(R.id.container);
+        toggle = new ActionBarDrawerToggle(this, mainLayout, R.string.open_str, R.string.close_str);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toggle.syncState();
+        final NavigationView navigationView = findViewById(R.id.main_drawer_view);
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction;
         transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.fragment, home);
         transaction.commit();
+
+
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                        int id = menuItem.getItemId();
+                        if (id == R.id.item1) {
+                            FragmentTransaction transaction;
+                            transaction = getSupportFragmentManager().beginTransaction();
+                            transaction.replace(R.id.fragment, home);
+                            getSupportFragmentManager().popBackStackImmediate(null,getSupportFragmentManager().POP_BACK_STACK_INCLUSIVE);
+                            transaction.commit();
+                            mainLayout.closeDrawer(navigationView);
+                        } else if (id == R.id.item2) {
+                            getSupportFragmentManager().popBackStackImmediate(null,getSupportFragmentManager().POP_BACK_STACK_INCLUSIVE);
+                            FragmentTransaction transaction;
+                            transaction = getSupportFragmentManager().beginTransaction();
+                            transaction.replace(R.id.fragment, memberInfo);
+                            Bundle bundle = new Bundle();
+                            bundle.putString("strName", name);
+                            bundle.putString("strProfile", profile);
+                            bundle.putString("strEmail", email);
+                            bundle.putString("strAgeRange", ageRange);
+                            bundle.putString("strGender", gender);
+                            bundle.putString("strBirthday", birthday);
+                            bundle.putString("strKakaoNo",kakaoNo);
+                            memberInfo.setArguments(bundle);
+                            transaction.addToBackStack("memberInfo");
+                            transaction.commit();
+                            mainLayout.closeDrawer(navigationView);
+                        } else if (id == R.id.item3) {
+
+                        } else if (id == R.id.item4) {
+
+                        } else if (id == R.id.item5) {
+
+                        } else {
+
+                        }
+
+                        return false;
+                    }
+                });
     }
 
     public void onClickLogout(View v) {
@@ -102,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
 
                             @Override
                             public void onSuccess(Long result) {
-                                Log.d("testtest","탈퇴"+kakaoNo);
+                                Log.d("testtest", "탈퇴" + kakaoNo);
                                 Map<String, String> map = new HashMap<String, String>();
                                 map.put("method", "signDown");
                                 map.put("kakaoNo", kakaoNo);
@@ -128,15 +192,31 @@ public class MainActivity extends AppCompatActivity {
                 }).show();
     }
 
-    public void onClickBuy(View v){
-        Toast.makeText(this,"내차사기",Toast.LENGTH_SHORT).show();
-    }
-    public void onClickSell(View v){
-        Toast.makeText(this,"내차팔기",Toast.LENGTH_SHORT).show();
-    }
-    public void onClickCommunity(View v){
-        Toast.makeText(this,"커뮤니티",Toast.LENGTH_SHORT).show();
+    public void onClickBuy(View v) {
+        Toast.makeText(this, "내차사기", Toast.LENGTH_SHORT).show();
     }
 
+    public void onClickSell(View v) {
+        Toast.makeText(this, "내차팔기", Toast.LENGTH_SHORT).show();
+    }
+
+    public void onClickCommunity(View v) {
+        Toast.makeText(this, "커뮤니티", Toast.LENGTH_SHORT).show();
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        ImageView iv = findViewById(R.id.navigation_header_image);
+        TextView tv = findViewById(R.id.navigation_header_id);
+        tv.setText(name);
+        if (profile != null)
+            Glide.with(this).load(profile).into(iv);
+
+        if (toggle.onOptionsItemSelected(item)) {
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
 }
