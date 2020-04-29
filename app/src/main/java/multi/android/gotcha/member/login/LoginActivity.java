@@ -57,6 +57,8 @@ public class LoginActivity extends AppCompatActivity {
     String kakaoNo ="";
     String phoneNo = "";
     String gender = "";
+    String email = "";
+    String name = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -168,16 +170,21 @@ public class LoginActivity extends AppCompatActivity {
                     } else { // 모든 항목에 동의했다면 -> 유저 정보를 가져와서 MainActivity에 전달하고 MainActivity 실행.
                         kakaoNo=result.getId()+"";
                         Map<String, String> map = new HashMap<String, String>();
-                        map.put("method", "SearchIdInKakao");
+                        map.put("method", "searchIdInKakao");
                         map.put("kakaoNo", kakaoNo);
                         networkTask = new Task();
                         networkTask.execute(map);
-                        SystemClock.sleep(300);
+                        while(networkTask.getResult().equals("")){
+                            SystemClock.sleep(10);
+                        }
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         intent.putExtra("name", result.getNickname());
+                        name = result.getNickname();
                         intent.putExtra("profile", result.getProfileImagePath());
-                        if (result.getKakaoAccount().hasEmail() == OptionalBoolean.TRUE)
+                        if (result.getKakaoAccount().hasEmail() == OptionalBoolean.TRUE) {
                             intent.putExtra("email", result.getKakaoAccount().getEmail());
+                            email = result.getKakaoAccount().getEmail();
+                        }
                         else
                             intent.putExtra("email", "none");
                         if (result.getKakaoAccount().hasAgeRange() == OptionalBoolean.TRUE)
@@ -204,7 +211,7 @@ public class LoginActivity extends AppCompatActivity {
                             intent.putExtra("kakaoNo",result.getId() + "");
                             startActivity(intent);
                             finish();
-                        } else {
+                        } else if(check.equals("false")) {
                             SignUp();
                         }
                     }
@@ -283,6 +290,11 @@ public class LoginActivity extends AppCompatActivity {
             FragmentTransaction transaction;
             transaction = fragmentManager.beginTransaction();
             transaction.replace(R.id.LFragment, signUpFragment2);
+            Bundle bundle = new Bundle();
+            bundle.putString("strName", name);
+            bundle.putString("strEmail", email);
+            bundle.putString("strGender", gender);
+            signUpFragment2.setArguments(bundle);
             transaction.addToBackStack("signUpFragment2");
             transaction.commit();
         } else {
