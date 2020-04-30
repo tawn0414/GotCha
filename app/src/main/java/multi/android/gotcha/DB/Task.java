@@ -11,7 +11,7 @@ import java.util.Map;
 public class Task extends AsyncTask<Map<String, String>, Integer, String> {
     private String result="";
     private String method;
-    public static String ip = "70.12.224.117"; // 자신의 IP주소를 쓰시면 됩니다.
+    public static String ip = "14.47.113.175"; // 자신의 IP주소를 쓰시면 됩니다.
 
     @Override
     protected String doInBackground(Map<String, String>... maps) { // 내가 전송하고 싶은 파라미터

@@ -28,8 +28,11 @@ import com.kakao.usermgmt.callback.LogoutResponseCallback;
 import com.kakao.usermgmt.callback.UnLinkResponseCallback;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import multi.android.gotcha.DB.CarMLVO;
+import multi.android.gotcha.DB.DBHandler;
 import multi.android.gotcha.DB.Task;
 import multi.android.gotcha.member.login.LoginActivity;
 import multi.android.gotcha.member.login.MemberInfo;
@@ -52,6 +55,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        DBHandler handler;
+        handler = DBHandler.open(this);
+        /*
+        List<CarMLVO> list = handler.searchAll("K3");
+        Log.d("listtest",list.size()+"");
+        */
         intent = getIntent();
         kakaoNo = intent.getStringExtra("kakaoNo");
         name = intent.getStringExtra("name");
@@ -61,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         gender = intent.getStringExtra("gender");
         birthday = intent.getStringExtra("birthday");
 
-        mainLayout = findViewById(R.id.container);
+        mainLayout = findViewById(R.id.main_container);
         toggle = new ActionBarDrawerToggle(this, mainLayout, R.string.open_str, R.string.close_str);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toggle.syncState();
