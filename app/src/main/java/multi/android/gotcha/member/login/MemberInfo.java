@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
+import com.google.gson.Gson;
 import com.kakao.auth.ApiErrorCode;
 import com.kakao.network.ErrorResult;
 import com.kakao.usermgmt.UserManagement;
@@ -27,19 +29,21 @@ import com.kakao.usermgmt.callback.UnLinkResponseCallback;
 import java.util.HashMap;
 import java.util.Map;
 
+import multi.android.gotcha.DB.MemberVO;
 import multi.android.gotcha.DB.Task;
 import multi.android.gotcha.R;
 
 public class MemberInfo extends Fragment {
-    String name, profile, email,ageRange,gender,birthday, kakaoNo;
+    String name, profile, email, ageRange, gender, birthday, kakaoNo, nickName, phoneNo;
     TextView tvNickname;
+    TextView tvName;
     ImageView ivProfile;
     TextView tvEmail;
-    TextView tvAgeRange;
     TextView tvGender;
-    TextView tvBirthday;
+    TextView tvPhoneNo;
     Button btnLogout;
     Button btnSignout;
+
     public MemberInfo() {
     }
 
@@ -54,6 +58,24 @@ public class MemberInfo extends Fragment {
             gender = getArguments().getString("strGender");
             birthday = getArguments().getString("strBirthday");
             kakaoNo = getArguments().getString("strKakaoNo");
+            Map<String, String> map = new HashMap<String, String>();
+            map.put("method", "searchIdInKakao");
+            map.put("kakaoNo", kakaoNo);
+            Task networkTask = new Task();
+            networkTask.execute(map);
+            while (networkTask.getResult().equals("")) {
+                SystemClock.sleep(10);
+            }
+            Gson gson = new Gson();
+            MemberVO data = gson.fromJson(networkTask.getResult(), MemberVO.class);
+            email = data.getMem_email();
+            name = data.getMem_name();
+            gender = data.getMem_gender();
+            nickName = data.getMem_nickname();
+            birthday = data.getMem_birth();
+            phoneNo = data.getMem_phoneno();
+
+
         }
     }
 
@@ -67,9 +89,9 @@ public class MemberInfo extends Fragment {
         btnSignout = view.findViewById(R.id.btnSignout);
         //순서대로 각각 이메일, 나잇대, 성별, 생일을 보여주는 TextView 선언
         tvEmail = view.findViewById(R.id.tvEmail);
-        tvAgeRange = view.findViewById(R.id.tvAgeRange);
+        tvName = view.findViewById(R.id.tvName);
         tvGender = view.findViewById(R.id.tvGender);
-        tvBirthday = view.findViewById(R.id.tvBirthday);
+        tvPhoneNo = view.findViewById(R.id.tvPhoneNo);
 
         btnSignout.setOnClickListener(new Button.OnClickListener() {
             @Override
@@ -133,13 +155,12 @@ public class MemberInfo extends Fragment {
                         }).show();
             }
         });
-        tvNickname.setText(name);
-        Log.d("testtest",tvNickname.getText().toString()+"dfs");
+        tvNickname.setText(nickName);
         Glide.with(this).load(profile).into(ivProfile);
         tvEmail.setText(email);
-        tvAgeRange.setText(ageRange);
+        tvName.setText(name);
         tvGender.setText(gender);
-        tvBirthday.setText(birthday);
+        tvPhoneNo.setText(phoneNo);
         return view;
     }
 

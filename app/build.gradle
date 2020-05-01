@@ -32,7 +32,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    /*승재 - 카카오로그인, db연결, glide(이미지처리)*/
+    /*승재 - 카카오로그인, db연결, glide(이미지처리), 그래프*/
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.kakao.sdk:usermgmt:1.27.0'
     implementation 'com.kakao.sdk:kakaotalk:1.27.0'
@@ -42,4 +42,14 @@ dependencies {
     //noinspection GradleCompatible
     implementation 'com.android.support:design:28.0.0'
     implementation 'com.google.android.material:material:1.0.0'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
+    /*현수 - 권한, exif인터페이스*/
+    //ted permission
+    implementation "gun0912.ted:tedpermission:2.1.0"
+    //Exifinterface
+    implementation "androidx.exifinterface:exifinterface:1.1.0"
+    
+    
+
 }

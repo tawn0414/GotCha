@@ -1,107 +1,98 @@
 package multi.android.gotcha.DB;
 
 public class MemberVO {
-	private String MEM_KAKAO_ID;
-	private String MEM_NAME;
-	private String MEM_NICKNAME;
-	private String MEM_BIRTH;
-	private String MEM_GENDER;
-	private String MEM_EMAIL;
-	private String MEM_PHONENO;
-	private String status;
+    private String mem_kakao_id;
+    private String mem_name;
+    private String mem_nickname;
+    private String mem_birth;
+    private String mem_gender;
+    private String mem_email;
+    private String mem_phoneno;
+    private String status;
 
-	public String getStatus() {
-		return status;
-	}
+    public String getStatus() {
+        return status;
+    }
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
-	public MemberVO() {
-	}
+    public MemberVO() {
+    }
 
-	public MemberVO(String MEM_KAKAO_ID, String MEM_NAME, String MEM_NICKNAME, String MEM_BIRTH, String MEM_GENDER, String MEM_EMAIL, String MEM_PHONENO, String status) {
-		this.MEM_KAKAO_ID = MEM_KAKAO_ID;
-		this.MEM_NAME = MEM_NAME;
-		this.MEM_NICKNAME = MEM_NICKNAME;
-		this.MEM_BIRTH = MEM_BIRTH;
-		this.MEM_GENDER = MEM_GENDER;
-		this.MEM_EMAIL = MEM_EMAIL;
-		this.MEM_PHONENO = MEM_PHONENO;
-		this.status = status;
-	}
+    public MemberVO(String mem_kakao_id, String mem_name, String mem_nickname, String mem_birth, String mem_gender,
+                    String mem_email, String mem_phoneno) {
+        super();
+        this.mem_kakao_id = mem_kakao_id;
+        this.mem_name = mem_name;
+        this.mem_nickname = mem_nickname;
+        this.mem_birth = mem_birth;
+        this.mem_gender = mem_gender;
+        this.mem_email = mem_email;
+        this.mem_phoneno = mem_phoneno;
+    }
 
-	@Override
-	public String toString() {
-		return "MemberVO{" +
-				"MEM_KAKAO_ID='" + MEM_KAKAO_ID + '\'' +
-				", MEM_NAME='" + MEM_NAME + '\'' +
-				", MEM_NICKNAME='" + MEM_NICKNAME + '\'' +
-				", MEM_BIRTH='" + MEM_BIRTH + '\'' +
-				", MEM_GENDER='" + MEM_GENDER + '\'' +
-				", MEM_EMAIL='" + MEM_EMAIL + '\'' +
-				", MEM_PHONENO='" + MEM_PHONENO + '\'' +
-				", status='" + status + '\'' +
-				'}';
-	}
+    @Override
+    public String toString() {
+        return "MemberVO [mem_kakao_id=" + mem_kakao_id + ", mem_name=" + mem_name + ", mem_nickname=" + mem_nickname
+                + ", mem_birth=" + mem_birth + ", mem_gender=" + mem_gender + ", mem_email=" + mem_email
+                + ", mem_phoneno=" + mem_phoneno + "]";
+    }
 
-	public String getMEM_KAKAO_ID() {
-		return MEM_KAKAO_ID;
-	}
+    public String getMem_kakao_id() {
+        return mem_kakao_id;
+    }
 
-	public void setMEM_KAKAO_ID(String mEM_KAKAO_ID) {
-		MEM_KAKAO_ID = mEM_KAKAO_ID;
-	}
+    public void setMem_kakao_id(String mem_kakao_id) {
+        this.mem_kakao_id = mem_kakao_id;
+    }
 
-	public String getMEM_NAME() {
-		return MEM_NAME;
-	}
+    public String getMem_name() {
+        return mem_name;
+    }
 
-	public void setMEM_NAME(String mEM_NAME) {
-		MEM_NAME = mEM_NAME;
-	}
+    public void setMem_name(String mem_name) {
+        this.mem_name = mem_name;
+    }
 
-	public String getMEM_NICKNAME() {
-		return MEM_NICKNAME;
-	}
+    public String getMem_nickname() {
+        return mem_nickname;
+    }
 
-	public void setMEM_NICKNAME(String mEM_NICKNAME) {
-		MEM_NICKNAME = mEM_NICKNAME;
-	}
+    public void setMem_nickname(String mem_nickname) {
+        this.mem_nickname = mem_nickname;
+    }
 
-	public String getMEM_BIRTH() {
-		return MEM_BIRTH;
-	}
+    public String getMem_birth() {
+        return mem_birth;
+    }
 
-	public void setMEM_BIRTH(String mEM_BIRTH) {
-		MEM_BIRTH = mEM_BIRTH;
-	}
+    public void setMem_birth(String mem_birth) {
+        this.mem_birth = mem_birth;
+    }
 
-	public String getMEM_GENDER() {
-		return MEM_GENDER;
-	}
+    public String getMem_gender() {
+        return mem_gender;
+    }
 
-	public void setMEM_GENDER(String mEM_GENDER) {
-		MEM_GENDER = mEM_GENDER;
-	}
+    public void setMem_gender(String mem_gender) {
+        this.mem_gender = mem_gender;
+    }
 
-	public String getMEM_EMAIL() {
-		return MEM_EMAIL;
-	}
+    public String getMem_email() {
+        return mem_email;
+    }
 
-	public void setMEM_EMAIL(String mEM_EMAIL) {
-		MEM_EMAIL = mEM_EMAIL;
-	}
+    public void setMem_email(String mem_email) {
+        this.mem_email = mem_email;
+    }
 
-	public String getMEM_PHONENO() {
-		return MEM_PHONENO;
-	}
+    public String getMem_phoneno() {
+        return mem_phoneno;
+    }
 
-	public void setMEM_PHONENO(String mEM_PHONENO) {
-		MEM_PHONENO = mEM_PHONENO;
-	}
-
-
-
+    public void setMem_phoneno(String mem_phoneno) {
+        this.mem_phoneno = mem_phoneno;
+    }
 }
