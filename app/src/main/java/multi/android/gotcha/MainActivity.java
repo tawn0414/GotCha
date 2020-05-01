@@ -36,6 +36,7 @@ import multi.android.gotcha.DB.DBHandler;
 import multi.android.gotcha.DB.Task;
 import multi.android.gotcha.member.login.LoginActivity;
 import multi.android.gotcha.member.login.MemberInfo;
+import multi.android.gotcha.sale.car_number;
 
 public class MainActivity extends AppCompatActivity {
     MemberInfo memberInfo = new MemberInfo();
@@ -206,6 +207,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickSell(View v) {
         Toast.makeText(this, "내차팔기", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, car_number.class);
+        startActivity(intent);
     }
 
     public void onClickCommunity(View v) {

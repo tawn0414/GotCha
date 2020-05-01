@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="10dp"
+    tools:context=".car_number">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="차량필수정보 제공"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/carRadio1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="#3300FBFF"
+            android:tag="0"
+            android:text="국산차" />
+
+        <RadioButton
+            android:id="@+id/carRadio2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="#3300FBFF"
+            android:tag="1"
+            android:text="수입차" />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/carNumber"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:maxLength="8"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        android:hint="차량번호를 입력하세요" />
+
+    <Button
+        android:id="@+id/carSendStartButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="계속하기" />
+
+</LinearLayout>
