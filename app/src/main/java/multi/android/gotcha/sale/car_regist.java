@@ -4,7 +4,10 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+<<<<<<< HEAD
 import android.util.Log;
+=======
+>>>>>>> upstream/master
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -301,7 +304,10 @@ public class car_regist extends AppCompatActivity {
                     saleInsert.execute(map);
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
+<<<<<<< HEAD
                     finishAffinity();
+=======
+>>>>>>> upstream/master
                 }
                 break;
         }
