@@ -175,7 +175,6 @@ public class MainActivity extends AppCompatActivity {
 
                             @Override
                             public void onSuccess(Long result) {
-                                Log.d("testtest", "탈퇴" + kakaoNo);
                                 Map<String, String> map = new HashMap<String, String>();
                                 map.put("method", "signDown");
                                 map.put("kakaoNo", kakaoNo);

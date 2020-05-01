@@ -23,6 +23,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.gson.Gson;
 import com.kakao.auth.ApiErrorCode;
 import com.kakao.auth.ISessionCallback;
 import com.kakao.auth.Session;
@@ -37,6 +38,7 @@ import com.kakao.util.exception.KakaoException;
 import java.util.HashMap;
 import java.util.Map;
 
+import multi.android.gotcha.DB.MemberVO;
 import multi.android.gotcha.DB.Task;
 import multi.android.gotcha.MainActivity;
 import multi.android.gotcha.R;
@@ -177,6 +179,10 @@ public class LoginActivity extends AppCompatActivity {
                         while(networkTask.getResult().equals("")){
                             SystemClock.sleep(10);
                         }
+                        Gson gson = new Gson();
+                        MemberVO data = gson.fromJson(networkTask.getResult(), MemberVO.class);
+                        check = data.getStatus();
+
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         intent.putExtra("name", result.getNickname());
                         name = result.getNickname();
@@ -201,12 +207,7 @@ public class LoginActivity extends AppCompatActivity {
                             intent.putExtra("birthday", result.getKakaoAccount().getBirthday());
                         else
                             intent.putExtra("birthday", "none");
-                        if (check.equals("")) {
-                            check = networkTask.getResult();
-                        }
-                        Log.d("testtest",check);
-                        //1324166902
-                        Log.d("testtest", result.getId() + "");
+
                         if (check.equals("true")) {
                             intent.putExtra("kakaoNo",result.getId() + "");
                             startActivity(intent);
@@ -263,7 +264,6 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
-            Log.d("sms_test", "권한주세요");
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS}, 1000);
         } else {
             EditText et = signUpFragment1.getActivity().findViewById(R.id.inputPhoneNumber);
@@ -298,7 +298,6 @@ public class LoginActivity extends AppCompatActivity {
             transaction.addToBackStack("signUpFragment2");
             transaction.commit();
         } else {
-            Log.d("sms_test", "인증실패!");
         }
     }
     public void clickDatePicker(View v) {

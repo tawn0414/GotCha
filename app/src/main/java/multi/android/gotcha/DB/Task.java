@@ -11,18 +11,17 @@ import java.util.Map;
 public class Task extends AsyncTask<Map<String, String>, Integer, String> {
     private String result="";
     private String method;
-    public static String ip = "14.47.113.175"; // 자신의 IP주소를 쓰시면 됩니다.
+    public static String ip = "70.12.224.117"; // 자신의 IP주소를 쓰시면 됩니다.
 
     @Override
     protected String doInBackground(Map<String, String>... maps) { // 내가 전송하고 싶은 파라미터
         method=maps[0].get("method");
         String result = "";
-        Gson gson = new Gson();
+
         switch (method){
             case "searchIdInKakao":
                 result = SearchIdInKakao(maps[0]);
-                MemberVO data = gson.fromJson(result, MemberVO.class);
-                setResult(data.getStatus());
+                setResult(result);
                 break;
             case "signUpComplete":
                 result = SignUpComplete(maps[0]);
@@ -93,7 +92,6 @@ public class Task extends AsyncTask<Map<String, String>, Integer, String> {
         int statusCode = post.getHttpStatusCode();
         //응답 본문
         String body = post.getBody(); //Spring의 Controller에서 반환한 값. JSON 형식
-        Log.d("testtest","탈퇴"+"TAST성공");
         return body;
     }
 }

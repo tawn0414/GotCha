@@ -10,8 +10,13 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature
+        android:name="android.hardware.camera2"
+        android:required="true" />
 
     <application
+        android:largeHeap="true"
         android:name=".member.login.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -21,12 +26,23 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".member.login.LoginActivity"></activity>
+
+        <!-- 판매부분 액티비티-->
+        <activity android:name=".model_bmw"/>
+        <activity android:name=".model_bentz"/>
+        <activity android:name=".model_kia"/>
+        <activity android:name=".model_hyundai"/>
+        <activity android:name=".color_list" />
+        <activity android:name=".transmission_list" />
+        <activity android:name=".fuel_list" />
+        <activity android:name=".brand_list" />
+        <activity android:name=".car_regist" />
+        <activity android:name=".car_number">
+
         <activity android:name=".MainActivity" />
-        <activity android:name=".chart.ChartTestActivity">
+        <activity android:name=".member.login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
