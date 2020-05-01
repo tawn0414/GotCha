@@ -180,6 +180,7 @@ public class car_info extends Fragment implements View.OnClickListener {
                 intentBrand.putExtra("km", km);
                 intentBrand.putExtra("sago", sago);
                 getActivity().startActivity(intentBrand);
+                getActivity().finish();
                 break;
             case R.id.btnModel:
                 Log.d("check", "모델 고르기");
@@ -196,6 +197,7 @@ public class car_info extends Fragment implements View.OnClickListener {
                     intentModel.putExtra("km", km);
                     intentModel.putExtra("sago", sago);
                     getActivity().startActivity(intentModel);
+                    getActivity().finish();
                 } else if (brand.equals("기아")) {
                     Intent intentModel = new Intent(getContext(), model_kia.class);
                     intentModel.putExtra("carNum", carNumber);
@@ -209,6 +211,7 @@ public class car_info extends Fragment implements View.OnClickListener {
                     intentModel.putExtra("km", km);
                     intentModel.putExtra("sago", sago);
                     getActivity().startActivity(intentModel);
+                    getActivity().finish();
                 } else if (brand.equals("벤츠")) {
                     Intent intentModel = new Intent(getContext(), model_bentz.class);
                     intentModel.putExtra("carNum", carNumber);
@@ -222,6 +225,7 @@ public class car_info extends Fragment implements View.OnClickListener {
                     intentModel.putExtra("km", km);
                     intentModel.putExtra("sago", sago);
                     getActivity().startActivity(intentModel);
+                    getActivity().finish();
                 } else if (brand.equals("BMW")) {
                     Intent intentModel = new Intent(getContext(), model_bmw.class);
                     intentModel.putExtra("carNum", carNumber);
@@ -235,6 +239,7 @@ public class car_info extends Fragment implements View.OnClickListener {
                     intentModel.putExtra("km", km);
                     intentModel.putExtra("sago", sago);
                     getActivity().startActivity(intentModel);
+                    getActivity().finish();
                 } else {
                     Toast.makeText(getContext(), "브랜드를 먼저 고르세요", Toast.LENGTH_SHORT).show();
                     btnBrand.setBackgroundResource(R.drawable.border_red);
@@ -254,6 +259,7 @@ public class car_info extends Fragment implements View.OnClickListener {
                 intentFuel.putExtra("km", km);
                 intentFuel.putExtra("sago", sago);
                 getActivity().startActivity(intentFuel);
+                getActivity().finish();
                 break;
             case R.id.btnTransmission:
                 Log.d("check", "변속기 고르기");
@@ -269,6 +275,7 @@ public class car_info extends Fragment implements View.OnClickListener {
                 intentTransmission.putExtra("km", km);
                 intentTransmission.putExtra("sago", sago);
                 getActivity().startActivity(intentTransmission);
+                getActivity().finish();
                 break;
             case R.id.btnColor:
                 Log.d("check", "색상 고르기");
@@ -284,6 +291,7 @@ public class car_info extends Fragment implements View.OnClickListener {
                 intentColor.putExtra("km", km);
                 intentColor.putExtra("sago", sago);
                 getActivity().startActivity(intentColor);
+                getActivity().finish();
                 break;
         }
     }

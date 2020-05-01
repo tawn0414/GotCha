@@ -300,6 +300,7 @@ public class car_regist extends AppCompatActivity {
                     saleInsert.execute(map);
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
+                    finishAffinity();
                 }
                 break;
         }

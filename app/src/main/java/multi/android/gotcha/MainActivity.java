@@ -37,6 +37,7 @@ import multi.android.gotcha.DB.Task;
 import multi.android.gotcha.member.login.LoginActivity;
 import multi.android.gotcha.member.login.MemberInfo;
 import multi.android.gotcha.sale.car_number;
+import multi.android.gotcha.search.searchpage;
 
 public class MainActivity extends AppCompatActivity {
     MemberInfo memberInfo = new MemberInfo();
@@ -93,11 +94,11 @@ public class MainActivity extends AppCompatActivity {
                             FragmentTransaction transaction;
                             transaction = getSupportFragmentManager().beginTransaction();
                             transaction.replace(R.id.fragment, home);
-                            getSupportFragmentManager().popBackStackImmediate(null,getSupportFragmentManager().POP_BACK_STACK_INCLUSIVE);
+                            getSupportFragmentManager().popBackStackImmediate(null, getSupportFragmentManager().POP_BACK_STACK_INCLUSIVE);
                             transaction.commit();
                             mainLayout.closeDrawer(navigationView);
                         } else if (id == R.id.item2) {
-                            getSupportFragmentManager().popBackStackImmediate(null,getSupportFragmentManager().POP_BACK_STACK_INCLUSIVE);
+                            getSupportFragmentManager().popBackStackImmediate(null, getSupportFragmentManager().POP_BACK_STACK_INCLUSIVE);
                             FragmentTransaction transaction;
                             transaction = getSupportFragmentManager().beginTransaction();
                             transaction.replace(R.id.fragment, memberInfo);
@@ -108,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
                             bundle.putString("strAgeRange", ageRange);
                             bundle.putString("strGender", gender);
                             bundle.putString("strBirthday", birthday);
-                            bundle.putString("strKakaoNo",kakaoNo);
+                            bundle.putString("strKakaoNo", kakaoNo);
                             memberInfo.setArguments(bundle);
                             transaction.addToBackStack("memberInfo");
                             transaction.commit();
@@ -203,6 +204,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickBuy(View v) {
         Toast.makeText(this, "내차사기", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, searchpage.class);
+        startActivity(intent);
     }
 
     public void onClickSell(View v) {
