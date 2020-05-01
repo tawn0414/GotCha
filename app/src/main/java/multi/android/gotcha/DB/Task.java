@@ -32,6 +32,10 @@ public class Task extends AsyncTask<Map<String, String>, Integer, String> {
             case "saleInsert":
                 result = saleInsert(maps[0]);
                 break;
+            case "searchmodel":
+                result = searchmodel(maps[0]);
+                setResult(result);
+                break;
         }
         return result;
     }
@@ -110,6 +114,22 @@ public class Task extends AsyncTask<Map<String, String>, Integer, String> {
         //응답 본문
         String body = post.getBody(); //Spring의 Controller에서 반환한 값. JSON 형식
         Log.d("check","판매등록 테스트 성공");
+        return body;
+    }
+    public String searchmodel(Map<String, String> maps) {
+
+        //HTTP 요청 준비
+        HttpClient.Builder http = new HttpClient.Builder("GET", "http://" + ip + ":8088/DBServer/searchmodel");
+        //Parameter 전송
+        http.addAllParameters(maps);
+        //HTTP 요청 전송
+        HttpClient post = http.create();
+        post.request();
+        //응답 상태 코드
+        int statusCode = post.getHttpStatusCode();
+        //응답 본문
+        String body = post.getBody(); //Spring의 Controller에서 반환한 값. JSON 형식
+
         return body;
     }
 }
