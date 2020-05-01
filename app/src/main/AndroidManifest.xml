@@ -28,16 +28,16 @@
         android:usesCleartextTraffic="true">
 
         <!-- 판매부분 액티비티-->
-        <activity android:name=".model_bmw"/>
-        <activity android:name=".model_bentz"/>
-        <activity android:name=".model_kia"/>
-        <activity android:name=".model_hyundai"/>
-        <activity android:name=".color_list" />
-        <activity android:name=".transmission_list" />
-        <activity android:name=".fuel_list" />
-        <activity android:name=".brand_list" />
-        <activity android:name=".car_regist" />
-        <activity android:name=".car_number">
+        <activity android:name=".sale.model_bmw"/>
+        <activity android:name=".sale.model_bentz"/>
+        <activity android:name=".sale.model_kia"/>
+        <activity android:name=".sale.model_hyundai"/>
+        <activity android:name=".sale.color_list" />
+        <activity android:name=".sale.transmission_list" />
+        <activity android:name=".sale.fuel_list" />
+        <activity android:name=".sale.brand_list" />
+        <activity android:name=".sale.car_regist" />
+        <activity android:name=".sale.car_number"/>
 
         <activity android:name=".MainActivity" />
         <activity android:name=".member.login.LoginActivity">
