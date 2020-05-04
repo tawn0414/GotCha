@@ -140,7 +140,7 @@ public class MemberInfo extends Fragment {
                                         Toast.makeText(getContext(), "회원탈퇴에 성공했습니다.", Toast.LENGTH_SHORT).show();
                                         Intent intent = new Intent(getContext(), LoginActivity.class);
                                         startActivity(intent);
-
+                                        getActivity().finishAffinity();
                                         getActivity().fileList();
                                     }
                                 });

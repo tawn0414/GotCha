@@ -15,17 +15,17 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import multi.android.gotcha.DB.carVO;
+import multi.android.gotcha.DB.CarVO;
 import multi.android.gotcha.R;
 
-public class CarAdapter extends ArrayAdapter<carVO> {
+public class CarAdapter extends ArrayAdapter<CarVO> {
     private Context context;
     private int resId;//view에 대한 리소스
-    private ArrayList<carVO> data; //핸들링할 데이터
+    private ArrayList<CarVO> data; //핸들링할 데이터
     private HashMap<Integer,MyMemento> userStateValue = new HashMap<>();
     private int value;
 
-    public CarAdapter(@NonNull Context context, int ResourceId, @NonNull ArrayList<carVO> objects) {
+    public CarAdapter(@NonNull Context context, int ResourceId, @NonNull ArrayList<CarVO> objects) {
         super(context, ResourceId, objects);
         this.context = context;
         this.resId = ResourceId;
@@ -50,7 +50,7 @@ public class CarAdapter extends ArrayAdapter<carVO> {
         }
 
         ViewHolder itemView = (ViewHolder)convertView.getTag();
-        carVO carVO = data.get(position);
+        CarVO carVO = data.get(position);
 
       /* private String brand;		//제조사
         private String model;			//모델명

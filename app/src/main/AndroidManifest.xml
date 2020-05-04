@@ -3,6 +3,8 @@
     package="multi.android.gotcha">
 
     <permission android:name="android.permission.READ_PHONE_STATE" />
+    <permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -11,16 +13,18 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <uses-feature
         android:name="android.hardware.camera2"
         android:required="true" />
 
     <application
-        android:largeHeap="true"
         android:name=".member.login.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -28,18 +32,21 @@
         android:usesCleartextTraffic="true">
 
         <!-- 판매부분 액티비티-->
-        <activity android:name=".sale.model_bmw"/>
-        <activity android:name=".sale.model_bentz"/>
-        <activity android:name=".sale.model_kia"/>
-        <activity android:name=".sale.model_hyundai"/>
+        <activity android:name=".sale.mysale_list"/>
+        <activity android:name=".sale.model_bmw" />
+        <activity android:name=".sale.model_bentz" />
+        <activity android:name=".sale.model_kia" />
+        <activity android:name=".sale.model_hyundai" />
         <activity android:name=".sale.color_list" />
         <activity android:name=".sale.transmission_list" />
         <activity android:name=".sale.fuel_list" />
         <activity android:name=".sale.brand_list" />
         <activity android:name=".sale.car_regist" />
-        <activity android:name=".sale.car_number"/>
-        <activity android:name=".search.searchpage"/>
-        <activity android:name=".search.searchpage2"/>
+        <activity android:name=".sale.car_number" />
+
+        <activity android:name=".search.searchpage" />
+        <activity android:name=".search.searchpage2" />
+
         <activity android:name=".MainActivity" />
         <activity android:name=".member.login.LoginActivity">
             <intent-filter>

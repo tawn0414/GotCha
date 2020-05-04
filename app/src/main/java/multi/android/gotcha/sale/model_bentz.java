@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import multi.android.gotcha.R;
 
 public class model_bentz extends AppCompatActivity {
-    String[] bentz= {"C-클래스","E-클래스"};
+    String[] bentz= {"C-class","E-class","S-class","CLS-class"};
     ListView listView;
     String carNum,from,fuel,transmission,color,brand,year,displacement,km,sago;
     @Override

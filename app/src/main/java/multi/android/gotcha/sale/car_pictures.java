@@ -1,12 +1,16 @@
 package multi.android.gotcha.sale;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,11 +19,17 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
 
+import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
+import multi.android.gotcha.DB.Task;
+import multi.android.gotcha.DB.fileUpload;
 import multi.android.gotcha.R;
 
 import static android.app.Activity.RESULT_OK;
@@ -30,7 +40,6 @@ import static android.app.Activity.RESULT_OK;
 public class car_pictures extends Fragment implements View.OnClickListener {
     boolean permission_state;
     String carNumber,from,pic1="",pic2="",pic3="",pic4="";
-    //Uri uriPic1,uriPic2,uriPic3,uriPic4;
     Bitmap bitPic1,bitPic2,bitPic3,bitPic4;
     TextView carFromNumber;
     ImageView sailImg1,sailImg2,sailImg3,sailImg4;
@@ -67,12 +76,16 @@ public class car_pictures extends Fragment implements View.OnClickListener {
         }
 
         carFromNumber.setText(from+" / "+carNumber);
+
+
+
+
         return v;
     }
 
     public void album(){
         Intent intent = new Intent(Intent.ACTION_PICK);
-        intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
+        intent.setDataAndType(android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
         startActivityForResult(intent, GET_GALLERY_IMAGE);
     }
 
@@ -130,9 +143,15 @@ public class car_pictures extends Fragment implements View.OnClickListener {
             Uri selectedImageUri = data.getData();
             switch (place){
                 case 1:
+                    String[] projection = { MediaStore.Images.ImageColumns.DISPLAY_NAME };
+                    Cursor cursor = getActivity().managedQuery(selectedImageUri, projection, null, null, null);
+                    int column_index = cursor
+                            .getColumnIndexOrThrow(MediaStore.Images.ImageColumns.DISPLAY_NAME);
+                    cursor.moveToFirst();
                     sailImg1.setImageURI(selectedImageUri);
                     sailImg1.setBackgroundResource(R.drawable.border_rectangle);
-                    pic1 = selectedImageUri.toString();
+                    pic1 = cursor.getString(column_index);
+                    Log.d("images",pic1);
                     try {
                         bitPic1 = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(),selectedImageUri);
                     } catch (IOException e) {
@@ -140,9 +159,15 @@ public class car_pictures extends Fragment implements View.OnClickListener {
                     }
                     break;
                 case 2:
+                    projection = new String[]{ MediaStore.Images.ImageColumns.DISPLAY_NAME };
+                    cursor = getActivity().managedQuery(selectedImageUri, projection, null, null, null);
+                    column_index = cursor
+                            .getColumnIndexOrThrow(MediaStore.Images.ImageColumns.DISPLAY_NAME);
+                    cursor.moveToFirst();
                     sailImg2.setImageURI(selectedImageUri);
                     sailImg2.setBackgroundResource(R.drawable.border_rectangle);
-                    pic2 = selectedImageUri.toString();
+                    pic2 = cursor.getString(column_index);
+                    Log.d("images",pic2);
                     try {
                         bitPic2 = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(),selectedImageUri);
                     } catch (IOException e) {
@@ -150,9 +175,15 @@ public class car_pictures extends Fragment implements View.OnClickListener {
                     }
                     break;
                 case 3:
+                    projection = new String[]{ MediaStore.Images.ImageColumns.DISPLAY_NAME };
+                    cursor = getActivity().managedQuery(selectedImageUri, projection, null, null, null);
+                    column_index = cursor
+                            .getColumnIndexOrThrow(MediaStore.Images.ImageColumns.DISPLAY_NAME);
+                    cursor.moveToFirst();
                     sailImg3.setImageURI(selectedImageUri);
                     sailImg3.setBackgroundResource(R.drawable.border_rectangle);
-                    pic3 = selectedImageUri.toString();
+                    pic3 = cursor.getString(column_index);
+                    Log.d("images",pic3);
                     try {
                         bitPic3 = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(),selectedImageUri);
                     } catch (IOException e) {
@@ -160,9 +191,15 @@ public class car_pictures extends Fragment implements View.OnClickListener {
                     }
                     break;
                 case 4:
+                    projection = new String[]{ MediaStore.Images.ImageColumns.DISPLAY_NAME };
+                    cursor = getActivity().managedQuery(selectedImageUri, projection, null, null, null);
+                    column_index = cursor
+                            .getColumnIndexOrThrow(MediaStore.Images.ImageColumns.DISPLAY_NAME);
+                    cursor.moveToFirst();
                     sailImg4.setImageURI(selectedImageUri);
                     sailImg4.setBackgroundResource(R.drawable.border_rectangle);
-                    pic4 = selectedImageUri.toString();
+                    pic4 = cursor.getString(column_index);
+                    Log.d("images",pic4);
                     try {
                         bitPic4 = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(),selectedImageUri);
                     } catch (IOException e) {
@@ -175,15 +212,24 @@ public class car_pictures extends Fragment implements View.OnClickListener {
                 switch (place){
                     case 1:
                         sailImg1.setImageBitmap(bitmap);
+                        pic1 = System.currentTimeMillis()+"";
+                        MediaStore.Images.Media.insertImage(getContext().getContentResolver(),bitmap,pic1,"사진저장완료");
                         break;
                     case 2:
                         sailImg2.setImageBitmap(bitmap);
+                        pic2 = System.currentTimeMillis()+"";
+                        MediaStore.Images.Media.insertImage(getContext().getContentResolver(),bitmap,pic2,"사진저장완료");
                         break;
                     case 3:
                         sailImg3.setImageBitmap(bitmap);
+                        pic3 = System.currentTimeMillis()+"";
+                        MediaStore.Images.Media.insertImage(getContext().getContentResolver(),bitmap,pic3,"사진저장완료");
                         break;
                     case 4:
                         sailImg4.setImageBitmap(bitmap);
+                        pic4 = System.currentTimeMillis()+"";
+                        MediaStore.Images.Media.insertImage(getContext().getContentResolver(),bitmap,pic4,"사진저장완료");
+                        break;
                 }
             }
         }

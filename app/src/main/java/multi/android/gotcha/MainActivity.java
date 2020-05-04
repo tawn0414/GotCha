@@ -1,12 +1,16 @@
 package multi.android.gotcha;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -15,6 +19,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -27,6 +32,9 @@ import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.LogoutResponseCallback;
 import com.kakao.usermgmt.callback.UnLinkResponseCallback;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,9 +42,11 @@ import java.util.Map;
 import multi.android.gotcha.DB.CarMLVO;
 import multi.android.gotcha.DB.DBHandler;
 import multi.android.gotcha.DB.Task;
+import multi.android.gotcha.DB.fileUpload;
 import multi.android.gotcha.member.login.LoginActivity;
 import multi.android.gotcha.member.login.MemberInfo;
 import multi.android.gotcha.sale.car_number;
+import multi.android.gotcha.sale.mysale_list;
 import multi.android.gotcha.search.searchpage;
 
 public class MainActivity extends AppCompatActivity {
@@ -59,10 +69,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         DBHandler handler;
         handler = DBHandler.open(this);
-        /*
-        List<CarMLVO> list = handler.searchAll("K3");
-        Log.d("listtest",list.size()+"");
-        */
+
         intent = getIntent();
         kakaoNo = intent.getStringExtra("kakaoNo");
         name = intent.getStringExtra("name");
@@ -115,7 +122,8 @@ public class MainActivity extends AppCompatActivity {
                             transaction.commit();
                             mainLayout.closeDrawer(navigationView);
                         } else if (id == R.id.item3) {
-
+                            Intent intent = new Intent(MainActivity.this, mysale_list.class);
+                            startActivity(intent);
                         } else if (id == R.id.item4) {
 
                         } else if (id == R.id.item5) {
@@ -187,7 +195,7 @@ public class MainActivity extends AppCompatActivity {
                                 Toast.makeText(MainActivity.this, "회원탈퇴에 성공했습니다.", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                                 startActivity(intent);
-
+                                finishAffinity();
                                 MainActivity.this.fileList();
                             }
                         });

@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
@@ -42,7 +43,21 @@ public class HttpClient {
         body = readStream(conn);
         conn.disconnect();
     }
+    public void requestFileUpload(){
+        String boundary = "^-----^";
+        HttpURLConnection conn = getConnection();
+        conn.setRequestProperty("Content-Type", "multipart/form-data;charset=utf-8;boundary="+boundary);
 
+        setRequestMethod(conn);
+
+        conn.setConnectTimeout(5000);
+        conn.setDoOutput(true);
+        conn.setDoInput(true);
+        setBody(conn);
+        httpStatusCode = getStatusCode(conn);
+        body = readStream(conn);
+        conn.disconnect();
+    }
     private HttpURLConnection getConnection() {
         try {
             URL url = new URL(builder.getUrl());
