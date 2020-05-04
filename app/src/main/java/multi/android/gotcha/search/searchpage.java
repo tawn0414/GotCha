@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.Map;
 
 import multi.android.gotcha.DB.Task;
-import multi.android.gotcha.DB.carVO;
+import multi.android.gotcha.DB.CarVO;
 import multi.android.gotcha.R;
 
 
@@ -44,7 +44,7 @@ public class searchpage extends AppCompatActivity {
 
     ListView listView;
 
-    ArrayList<carVO> carlist;
+    ArrayList<CarVO> carlist;
     Button search_btn;
     EditText search_text;
     @Override
@@ -84,10 +84,10 @@ public class searchpage extends AppCompatActivity {
                     networkTask.execute(map);
                     SystemClock.sleep(300);
                     Gson gson = new Gson();
-                    List<carVO> data = gson.fromJson(networkTask.getResult(), new TypeToken<List<carVO>>(){}.getType());
+                    List<CarVO> data = gson.fromJson(networkTask.getResult(), new TypeToken<List<CarVO>>(){}.getType());
                     listView=findViewById(R.id.search_model);
                     CarAdapter carAdapter =
-                            new CarAdapter(searchpage.this,R.layout.activity_buy_my_car_row, (ArrayList<carVO>) data);
+                            new CarAdapter(searchpage.this,R.layout.activity_buy_my_car_row, (ArrayList<CarVO>) data);
                     listView.setAdapter(carAdapter);
                 }
             }

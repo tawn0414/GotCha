@@ -4,10 +4,12 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
@@ -21,22 +23,26 @@ public class DBHandler {
         return new DBHandler();
     }
 
-    public List<CarMLVO> searchAll(String str) {
-        Cursor cursor = db.query("data2", new String[]{"company", "model", "option", "old","fuel","km","price","prediction","diff"}, "model=?", new String[]{str}, null, null, null);
-        List<CarMLVO> list = new ArrayList<CarMLVO>();
+    public String MLprice(String input_model,String input_old, String input_km) {
+        Cursor cursor = db.query("fomular", new String[]{"model", "intercept", "old", "km"}, "model=?", new String[]{input_model}, null, null, null);
+        String model;
+        Double intercept=0d;
+        Double old=0d;
+        Double km=0d;
+        Calendar now = Calendar.getInstance();
+        int cy = now.get(Calendar.YEAR);
+        int cm = now.get(Calendar.MONTH)+1;
+        // input_old : yyyymmdd
+        int y = Integer.parseInt(input_old.substring(0,4));
+        int m = Integer.parseInt(input_old.substring(4,6));
         while (cursor.moveToNext()) {
-            String company = cursor.getString(0);
-            String model = cursor.getString(1);
-            String option = cursor.getString(2);
-            String old = cursor.getString(3);
-            String fuel = cursor.getString(4);
-            String km = cursor.getString(5);
-            String price = cursor.getString(6);
-            String prediction = cursor.getString(7);
-            String diff = cursor.getString(8);
-            CarMLVO car = new CarMLVO(company,model,option,old,fuel,km,price,prediction,diff);
-            list.add(car);
+            model = cursor.getString(0);
+            intercept = Double.parseDouble(cursor.getString(1));
+            old = Double.parseDouble(cursor.getString(2));
+            km = Double.parseDouble(cursor.getString(3));
         }
-        return list;
+        Double result = intercept + ((cy-y)*12+(cm-m))*old + km*Double.parseDouble(input_km);
+
+        return result.intValue()+"";
     }
 }

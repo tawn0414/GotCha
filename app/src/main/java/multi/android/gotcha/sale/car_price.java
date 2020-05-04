@@ -73,5 +73,4 @@ public class car_price extends Fragment {
 
         return v;
     }
-
 }

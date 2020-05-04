@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 import multi.android.gotcha.DB.Task;
-import multi.android.gotcha.DB.carVO;
+import multi.android.gotcha.DB.CarVO;
 import multi.android.gotcha.R;
 
 
@@ -47,10 +47,10 @@ public class search_brand extends Fragment {
         networkTask.execute(map);
         SystemClock.sleep(300);
         Gson gson = new Gson();
-        List<carVO> data = gson.fromJson(networkTask.getResult(), new TypeToken<List<carVO>>() {
+        List<CarVO> data = gson.fromJson(networkTask.getResult(), new TypeToken<List<CarVO>>() {
         }.getType());
         CarAdapter carAdapter =
-                new CarAdapter(getContext(), R.layout.activity_buy_my_car_row, (ArrayList<carVO>) data);
+                new CarAdapter(getContext(), R.layout.activity_buy_my_car_row, (ArrayList<CarVO>) data);
         listView.setAdapter(carAdapter);
 
         return v;

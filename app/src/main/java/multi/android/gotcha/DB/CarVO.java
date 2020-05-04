@@ -1,6 +1,6 @@
 package multi.android.gotcha.DB;
 
-public class carVO {
+public class CarVO {
 
     private String brand;		//제조사
     private String model;			//모델명
@@ -15,11 +15,11 @@ public class carVO {
     private String sago;		//사고 유무
     private String sail_explain;
 
-    public carVO(){
+    public CarVO(){
 
     }
 
-    public carVO(String brand, String model, String car_number, String year, String fuel, String grade, String transmission, String color, String km, String price, String sago, String sail_explain) {
+    public CarVO(String brand, String model, String car_number, String year, String fuel, String grade, String transmission, String color, String km, String price, String sago, String sail_explain) {
         this.brand = brand;
         this.model = model;
         this.car_number = car_number;

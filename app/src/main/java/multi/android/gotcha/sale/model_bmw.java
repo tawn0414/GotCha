@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import multi.android.gotcha.R;
 
 public class model_bmw extends AppCompatActivity {
-    String[] bmw= {"3시리즈","5시리즈"};
+    String[] bmw= {"B3","B5","B7"};
     ListView listView;
     String carNum,from,fuel,transmission,color,brand,year,displacement,km,sago;
     @Override

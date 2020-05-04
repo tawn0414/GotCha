@@ -1,6 +1,7 @@
 package multi.android.gotcha.sale;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -9,10 +10,13 @@ import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import multi.android.gotcha.DB.colorItem;
 import multi.android.gotcha.R;
 
 public class color_list extends AppCompatActivity {
-    String[] color_name= {"흰색","노란색","파란색"};
     ListView listView;
     String carNum,from,fuel,transmission,brand,model,year,displacement,km,sago;
     @Override
@@ -20,6 +24,23 @@ public class color_list extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_color_list);
         listView = findViewById(R.id.color_list);
+        List<colorItem> colorItems = new ArrayList<>();
+        colorItems.add(new colorItem(Color.parseColor("#000000"),"검정색"));
+        colorItems.add(new colorItem(Color.parseColor("#c0c0c0"),"은색"));
+        colorItems.add(new colorItem(Color.parseColor("#ffffff"),"흰색"));
+        colorItems.add(new colorItem(Color.parseColor("#FFFACD"),"진주색"));
+        colorItems.add(new colorItem(Color.parseColor("#DCDCDC"),"명은색"));
+        colorItems.add(new colorItem(Color.parseColor("#843900"),"갈색"));
+        colorItems.add(new colorItem(Color.parseColor("#C37E00"),"금색"));
+        colorItems.add(new colorItem(Color.parseColor("#00008B"),"청색"));
+        colorItems.add(new colorItem(Color.parseColor("#7FFFD4"),"하늘색"));
+        colorItems.add(new colorItem(Color.parseColor("#32CD32"),"녹색"));
+        colorItems.add(new colorItem(Color.parseColor("#FF0000"),"빨간색"));
+        colorItems.add(new colorItem(Color.parseColor("#ff7f00"),"주황색"));
+        colorItems.add(new colorItem(Color.parseColor("#FFFF00"),"노란색"));
+        colorItems.add(new colorItem(Color.parseColor("#800080"),"보라색"));
+        colorItems.add(new colorItem(Color.parseColor("#FF69B4"),"분홍색"));
+        colorAdapter colorAdapter = new colorAdapter(this,colorItems,listView);
         Intent receive = getIntent();
         carNum = receive.getStringExtra("carNum");
         from = receive.getStringExtra("from");
@@ -31,15 +52,13 @@ public class color_list extends AppCompatActivity {
         displacement = receive.getStringExtra("displacement");
         km = receive.getStringExtra("km");
         sago = receive.getStringExtra("sago");
-        ArrayAdapter adapter = new ArrayAdapter(this,
-                                                android.R.layout.simple_list_item_1,
-                                                color_name);
-        listView.setAdapter(adapter);
+        listView.setAdapter(colorAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String color = parent.getItemAtPosition(position).toString().split(",")[1];
                 Intent intent = new Intent(color_list.this,car_regist.class);
-                intent.putExtra("color",parent.getItemAtPosition(position).toString());
+                intent.putExtra("color",color);
                 intent.putExtra("carNum",carNum);
                 intent.putExtra("from",from);
                 intent.putExtra("fuel",fuel);

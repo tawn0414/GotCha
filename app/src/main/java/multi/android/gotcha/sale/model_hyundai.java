@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import multi.android.gotcha.R;
 
 public class model_hyundai extends AppCompatActivity {
-    String[] hyundai= {"그랜저","아반떼","쏘나타","싼타페","제네시스","스타렉스","투싼"};
+    String[] hyundai= {"그랜져","아반떼","쏘나타","싼타페","제네시스","포터2"};
     ListView listView;
     String carNum,from,fuel,transmission,color,brand,year,displacement,km,sago;
     @Override
