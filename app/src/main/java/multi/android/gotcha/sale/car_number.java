@@ -15,7 +15,7 @@ public class car_number extends AppCompatActivity implements View.OnClickListene
     Button carSendStartButton;
     RadioButton carRadio1,carRadio2;
     EditText carNumber;
-    String cont;
+    String cont,userId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +28,8 @@ public class car_number extends AppCompatActivity implements View.OnClickListene
         carRadio2.setOnClickListener(this);
         carNumber = findViewById(R.id.carNumber);
 
+        Intent intent = getIntent();
+        userId = intent.getStringExtra("userId");
     }
 
     @Override
@@ -40,6 +42,7 @@ public class car_number extends AppCompatActivity implements View.OnClickListene
             Intent intent = new Intent(car_number.this,car_regist.class);
             intent.putExtra("carNum",carNumber.getText().toString());
             intent.putExtra("from",cont);
+            intent.putExtra("userId",userId);
             startActivity(intent);
         }
     }

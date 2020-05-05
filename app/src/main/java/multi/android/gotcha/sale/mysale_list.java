@@ -24,15 +24,17 @@ import multi.android.gotcha.R;
 
 public class mysale_list extends AppCompatActivity {
     ListView mySaleList;
-    Button btnDelete;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mysale_list);
         mySaleList = findViewById(R.id.mySaleList);
+        Intent intent = getIntent();
+        String userId = intent.getStringExtra("name");
         Map<String, String> map = new HashMap<>();
         map.put("method", "myList");
+        map.put("userId",userId);
         Task myList = new Task();
         myList.execute(map);
         while (myList.getResult().equals("")) {
@@ -46,24 +48,5 @@ public class mysale_list extends AppCompatActivity {
 
         mysaleAdapter adapter = new mysaleAdapter(this,list,mySaleList);
         mySaleList.setAdapter(adapter);
-        mySaleList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                btnDelete = view.findViewById(R.id.mySaleDelete);
-                btnDelete.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Map<String, String> map = new HashMap<String, String>();
-                        map.put("method", "myListDelete");
-                        Task myListDelete = new Task();
-                        myListDelete.execute(map);
-
-                        Intent intent = new Intent(mysale_list.this, mysale_list.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                        startActivity(intent);
-                    }
-                });
-            }
-        });
     }
 }

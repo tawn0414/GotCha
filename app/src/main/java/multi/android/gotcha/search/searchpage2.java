@@ -39,9 +39,10 @@ public class searchpage2 extends AppCompatActivity {
 
     ArrayList<Fragment> fragmentArrayList = new ArrayList<Fragment>();
     String[] titleList ={"제조사","연료","주행거리"};
-    search_km search_km = new search_km();
-    search_fuel search_fuel = new search_fuel();
+
     search_brand search_brand = new search_brand();
+    search_fuel search_fuel = new search_fuel();
+    search_km search_km = new search_km();
 
     ListView listView;
     ArrayList<CarVO> carlist;
@@ -56,22 +57,16 @@ public class searchpage2 extends AppCompatActivity {
         tabLayout = findViewById(R.id.tablayout);
         viewPager = findViewById(R.id.pager);
 
-        fragmentArrayList.add(search_km);
-        fragmentArrayList.add(search_fuel);
         fragmentArrayList.add(search_brand);
+        fragmentArrayList.add(search_fuel);
+        fragmentArrayList.add(search_km);
+
+
 
         //검색어 가져와서 검색하기
         search_text=findViewById(R.id.search_text);
         search_btn =findViewById(R.id.search_btn);
         final Context context = getApplicationContext();
-
-        Map<String, String> map = new HashMap<String, String>();
-        map.put("method", "searchmodel");
-        Task networkTask = new Task();
-        networkTask.execute(map);
-        SystemClock.sleep(300);
-        Gson gson = new Gson();
-        List<CarVO> date = gson.fromJson(networkTask.getResult(), new TypeToken<List<CarVO>>(){}.getType());
 
         search_btn.setOnClickListener(new View.OnClickListener() {
             @Override

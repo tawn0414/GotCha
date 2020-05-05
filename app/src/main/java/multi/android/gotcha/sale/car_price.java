@@ -15,9 +15,9 @@ import androidx.fragment.app.Fragment;
 import multi.android.gotcha.R;
 
 public class car_price extends Fragment {
-    String carNumber,from,price="",detail="";
+    String carNumber,from,price="",detail="",predict;
     EditText salePrice,detailInfo;
-    TextView carFromNumber,priceAvg;
+    TextView carFromNumber,pricePredict;
     public car_price() {
         // Required empty public constructor
     }
@@ -30,7 +30,7 @@ public class car_price extends Fragment {
         //입력받는 판매가
         salePrice = v.findViewById(R.id.salePrice);
         //보여줄 적정 판매가
-        priceAvg = v.findViewById(R.id.priceAvg);
+        pricePredict = v.findViewById(R.id.pricePredict);
         detailInfo = v.findViewById(R.id.detailInfo);
 
         Bundle bundle = this.getArguments();
@@ -66,6 +66,19 @@ public class car_price extends Fragment {
                 detail = detailInfo.getText().toString();
                 Log.d("check",detailInfo.getText().toString());
                 detailInfo.setBackgroundResource(R.drawable.border_rectangle);
+            }
+        });
+        pricePredict.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                predict = pricePredict.getText().toString();
+                Log.d("check",pricePredict.getText().toString());
             }
         });
 
