@@ -1,30 +1,24 @@
 package multi.android.gotcha;
 
-import android.Manifest;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.Resource;
 import com.google.android.material.navigation.NavigationView;
 import com.kakao.auth.ApiErrorCode;
 import com.kakao.network.ErrorResult;
@@ -32,17 +26,12 @@ import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.LogoutResponseCallback;
 import com.kakao.usermgmt.callback.UnLinkResponseCallback;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.OutputStream;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import multi.android.gotcha.DB.CarMLVO;
+import multi.android.gotcha.Community.CommunityMainActivity;
 import multi.android.gotcha.DB.DBHandler;
 import multi.android.gotcha.DB.Task;
-import multi.android.gotcha.DB.fileUpload;
 import multi.android.gotcha.member.login.LoginActivity;
 import multi.android.gotcha.member.login.MemberInfo;
 import multi.android.gotcha.sale.car_number;
@@ -69,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         DBHandler handler;
         handler = DBHandler.open(this);
-
         intent = getIntent();
         kakaoNo = intent.getStringExtra("kakaoNo");
         name = intent.getStringExtra("name");
@@ -78,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
         ageRange = intent.getStringExtra("ageRange");
         gender = intent.getStringExtra("gender");
         birthday = intent.getStringExtra("birthday");
-
         mainLayout = findViewById(R.id.main_container);
         toggle = new ActionBarDrawerToggle(this, mainLayout, R.string.open_str, R.string.close_str);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -123,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
                             mainLayout.closeDrawer(navigationView);
                         } else if (id == R.id.item3) {
                             Intent intent = new Intent(MainActivity.this, mysale_list.class);
+                            intent.putExtra("name", kakaoNo);
                             startActivity(intent);
                         } else if (id == R.id.item4) {
 
@@ -211,19 +199,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickBuy(View v) {
-        Toast.makeText(this, "내차사기", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, searchpage.class);
         startActivity(intent);
     }
 
     public void onClickSell(View v) {
-        Toast.makeText(this, "내차팔기", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, car_number.class);
+        intent.putExtra("userId", kakaoNo);
         startActivity(intent);
     }
 
     public void onClickCommunity(View v) {
-        Toast.makeText(this, "커뮤니티", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(multi.android.gotcha.MainActivity.this, CommunityMainActivity.class);
+        intent.putExtra("name",name);
+        intent.putExtra("strProfile",profile);
+        intent.putExtra("strEmail",email);
+        intent.putExtra("strAgeRange",ageRange);
+        intent.putExtra("strGender",gender);
+        intent.putExtra("strBirthday",birthday);
+        intent.putExtra("strKakaoNo",kakaoNo);
+        startActivity(intent);
     }
 
 

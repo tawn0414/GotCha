@@ -45,11 +45,11 @@ public class car_regist extends AppCompatActivity {
     car_pictures car_pictures = new car_pictures();
     car_finish car_finish = new car_finish();
 
-    String carNum, from;
+    String carNum, from, userId;
 
     boolean permission_state;
     String brand = "", fuel = "", transmission = "", color = "", model = "", year = "", displacement = "", km = "", sago = "";
-    String price = "", detail = "";
+    String price = "", detail = "",predict = "";
     String pic1 = "", pic2 = "", pic3 = "", pic4 = "";
     Button btnBrand, btnModel, btnFuel, btnTransmission, btnColor;
     EditText yearInfo;
@@ -91,6 +91,7 @@ public class car_regist extends AppCompatActivity {
         Intent intent = getIntent();
         carNum = intent.getStringExtra("carNum");
         from = intent.getStringExtra("from");
+        userId = intent.getStringExtra("userId");
 
         if (intent.getStringExtra("brand") != null) {
             brand = intent.getStringExtra("brand");
@@ -143,7 +144,7 @@ public class car_regist extends AppCompatActivity {
         Log.d("price",km);
         String result = dbHandler.MLprice(model, year, km);
 
-        TextView tv = car_price.getActivity().findViewById(R.id.priceAvg);
+        TextView tv = car_price.getActivity().findViewById(R.id.pricePredict);
         tv.setText(result + "  만원");
     }
 
@@ -230,10 +231,13 @@ public class car_regist extends AppCompatActivity {
                 break;
             case R.id.btnNext2:
                 price = car_price.price;
+                predict = car_price.predict;
                 detail = car_price.detail;
                 if (price.equals("")) {
                     Toast.makeText(car_regist.this, "필수항목 입력해주세요", Toast.LENGTH_SHORT).show();
                     car_price.salePrice.setBackgroundResource(R.drawable.border_red);
+                } else if (predict.equals("")) {
+                    Toast.makeText(car_regist.this, "적정 가격 확인해주세요", Toast.LENGTH_SHORT).show();
                 } else if (detail.equals("")) {
                     Toast.makeText(car_regist.this, "필수항목 입력해주세요", Toast.LENGTH_SHORT).show();
                     car_price.detailInfo.setBackgroundResource(R.drawable.border_red);
@@ -283,6 +287,7 @@ public class car_regist extends AppCompatActivity {
                     Log.d("images",pic1);
                     Map<String, String> map = new HashMap<String, String>();
                     map.put("method", "saleInsert");
+                    map.put("userId",userId);
                     map.put("carNumber", carNum);
                     map.put("brand", brand);
                     map.put("model", model);
@@ -294,7 +299,12 @@ public class car_regist extends AppCompatActivity {
                     map.put("km", car_info.km);
                     map.put("sago", car_info.sago);
                     map.put("price", car_price.price);
+                    map.put("salePredict",car_price.predict);
                     map.put("saleExplain", car_price.detail);
+                    map.put("filename1",car_pictures.pic1);
+                    map.put("filename2",car_pictures.pic2);
+                    map.put("filename3",car_pictures.pic3);
+                    map.put("filename4",car_pictures.pic4);
                     Task saleInsert = new Task();
                     saleInsert.execute(map);
 
@@ -312,11 +322,6 @@ public class car_regist extends AppCompatActivity {
                         networkTask.execute(map2);
                     }
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-
-
-
-
-
 
                     startActivity(intent);
                     finishAffinity();

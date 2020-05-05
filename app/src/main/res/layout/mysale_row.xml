@@ -8,7 +8,8 @@
         android:id="@+id/mySaleName"
         android:layout_width="300dp"
         android:layout_height="40dp"
-        android:gravity="center_vertical|center_horizontal"
+        android:paddingLeft="50dp"
+        android:gravity="center_vertical"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
     <Button
         android:id="@+id/mySaleDelete"

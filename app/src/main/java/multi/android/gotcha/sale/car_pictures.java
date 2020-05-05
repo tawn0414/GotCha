@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -212,22 +213,22 @@ public class car_pictures extends Fragment implements View.OnClickListener {
                 switch (place){
                     case 1:
                         sailImg1.setImageBitmap(bitmap);
-                        pic1 = System.currentTimeMillis()+"";
+                        pic1 = System.currentTimeMillis()+".jpg";
                         MediaStore.Images.Media.insertImage(getContext().getContentResolver(),bitmap,pic1,"사진저장완료");
                         break;
                     case 2:
                         sailImg2.setImageBitmap(bitmap);
-                        pic2 = System.currentTimeMillis()+"";
+                        pic2 = System.currentTimeMillis()+".jpg";
                         MediaStore.Images.Media.insertImage(getContext().getContentResolver(),bitmap,pic2,"사진저장완료");
                         break;
                     case 3:
                         sailImg3.setImageBitmap(bitmap);
-                        pic3 = System.currentTimeMillis()+"";
+                        pic3 = System.currentTimeMillis()+".jpg";
                         MediaStore.Images.Media.insertImage(getContext().getContentResolver(),bitmap,pic3,"사진저장완료");
                         break;
                     case 4:
                         sailImg4.setImageBitmap(bitmap);
-                        pic4 = System.currentTimeMillis()+"";
+                        pic4 = System.currentTimeMillis()+".jpg";
                         MediaStore.Images.Media.insertImage(getContext().getContentResolver(),bitmap,pic4,"사진저장완료");
                         break;
                 }

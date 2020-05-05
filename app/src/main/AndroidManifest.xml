@@ -30,7 +30,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
+        <!--커뮤니티 시작-->
+        <activity android:name=".Community.Freeboard_DetailActivity"></activity>
+        <activity android:name=".Community.Freeboard_MyDetailActivity"></activity>
+        <activity android:name=".Community.Freeboard_WriteActivity"></activity>
+        <activity android:name=".Community.CommunityMainActivity"></activity>
         <!-- 판매부분 액티비티-->
         <activity android:name=".sale.mysale_list"/>
         <activity android:name=".sale.model_bmw" />
@@ -43,10 +47,10 @@
         <activity android:name=".sale.brand_list" />
         <activity android:name=".sale.car_regist" />
         <activity android:name=".sale.car_number" />
-
+        <!-- 검색부분 액티비티-->
         <activity android:name=".search.searchpage" />
         <activity android:name=".search.searchpage2" />
-
+        <!-- 로그인, 메인 액티비티-->
         <activity android:name=".MainActivity" />
         <activity android:name=".member.login.LoginActivity">
             <intent-filter>

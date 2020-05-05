@@ -44,7 +44,6 @@ public class searchpage extends AppCompatActivity {
 
     ListView listView;
 
-    ArrayList<CarVO> carlist;
     Button search_btn;
     EditText search_text;
     @Override
@@ -78,7 +77,7 @@ public class searchpage extends AppCompatActivity {
                     //모델검색메소드 실행 검색어 일단받아는 옴
 
                     final Map<String, String> map = new HashMap<String, String>();
-                    map.put("method", "searchmodel");
+                    map.put("method", "modelSearch");
                     map.put("model", model);
                     Task networkTask = new Task();
                     networkTask.execute(map);

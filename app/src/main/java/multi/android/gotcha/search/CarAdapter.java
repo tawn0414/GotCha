@@ -30,7 +30,6 @@ public class CarAdapter extends ArrayAdapter<CarVO> {
         this.context = context;
         this.resId = ResourceId;
         this.data = objects;
-        Log.d("constructor", data.size()+"");
     }
 
 
@@ -52,18 +51,6 @@ public class CarAdapter extends ArrayAdapter<CarVO> {
         ViewHolder itemView = (ViewHolder)convertView.getTag();
         CarVO carVO = data.get(position);
 
-      /* private String brand;		//제조사
-        private String model;			//모델명
-        private String car_number;			//차량번호
-        private String year;			//연식
-        private String fuel;			//연료
-        private String grade;	//배기량
-        private String transmission;	//변속기
-        private String color;			//색상
-        private String km;		//주행거리
-        private String price;			//가격
-        private String sago;		//사고 유무
-        private String sail_explain;*/
 
         if(carVO!=null) {
             TextView brandView = itemView.brandView;
