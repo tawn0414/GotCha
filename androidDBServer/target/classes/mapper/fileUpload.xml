@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="file">
+
+	<insert id="saleInsert" parameterType="Map">
+		INSERT INTO SALEPICTURES VALUES (IMAGE_NUM_SEQ.NEXTVAL, seq_sale.CURRVAL, #{picture1}, #{picture2}, #{picture3},#{picture4})
+	</insert>
+
+	<select id="saleSelect" parameterType="String" resultType="salepicture">
+		SELECT * FROM SALEPICTURES WHERE SALENUM = #{salenum}
+	</select>
+
+</mapper>

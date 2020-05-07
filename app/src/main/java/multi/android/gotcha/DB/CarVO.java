@@ -2,54 +2,80 @@ package multi.android.gotcha.DB;
 
 public class CarVO {
 
-    private String brand;		//제조사
-    private String model;			//모델명
-    private String car_number;			//차량번호
-    private String year;			//연식
-    private String fuel;			//연료
-    private String grade;	//배기량
-    private String transmission;	//변속기
-    private String color;			//색상
-    private String km;		//주행거리
-    private String price;			//가격
-    private String sago;		//사고 유무
-    private String sail_explain;
+    private String saleNum;
+    private String userId;
+    private String carNumber;
+    private String brand;
+    private String model;
+    private String fuel;
+    private String transmission;
+    private String color;
+    private String year;
+    private String cc;
+    private String km;
+    private String sago;
+    private String price;
+    private String pricePredict;
+    private String saleExplain;
+    private String image;
 
-    public CarVO(){
 
+
+    public CarVO() {
+        super();
     }
 
-    public CarVO(String brand, String model, String car_number, String year, String fuel, String grade, String transmission, String color, String km, String price, String sago, String sail_explain) {
+    public CarVO(String saleNum, String userId, String carNumber, String brand, String model, String fuel,
+                 String transmission, String color, String year, String cc, String km, String sago, String price,
+                 String pricePredict, String saleExplain) {
+        super();
+        this.saleNum = saleNum;
+        this.userId = userId;
+        this.carNumber = carNumber;
         this.brand = brand;
         this.model = model;
-        this.car_number = car_number;
-        this.year = year;
         this.fuel = fuel;
-        this.grade = grade;
         this.transmission = transmission;
         this.color = color;
+        this.year = year;
+        this.cc = cc;
         this.km = km;
-        this.price = price;
         this.sago = sago;
-        this.sail_explain = sail_explain;
+        this.price = price;
+        this.pricePredict = pricePredict;
+        this.saleExplain = saleExplain;
     }
 
-    @Override
-    public String toString() {
-        return "carVO{" +
-                "brand='" + brand + '\'' +
-                ", model='" + model + '\'' +
-                ", car_number='" + car_number + '\'' +
-                ", year='" + year + '\'' +
-                ", fuel='" + fuel + '\'' +
-                ", grade='" + grade + '\'' +
-                ", transmission='" + transmission + '\'' +
-                ", color='" + color + '\'' +
-                ", km='" + km + '\'' +
-                ", price='" + price + '\'' +
-                ", sago='" + sago + '\'' +
-                ", sail_explain='" + sail_explain + '\'' +
-                '}';
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getSaleNum() {
+        return saleNum;
+    }
+
+    public void setSaleNum(String saleNum) {
+        this.saleNum = saleNum;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getCarNumber() {
+        return carNumber;
+    }
+
+    public void setCarNumber(String carNumber) {
+        this.carNumber = carNumber;
     }
 
     public String getBrand() {
@@ -68,36 +94,12 @@ public class CarVO {
         this.model = model;
     }
 
-    public String getCar_number() {
-        return car_number;
-    }
-
-    public void setCar_number(String car_number) {
-        this.car_number = car_number;
-    }
-
-    public String getYear() {
-        return year;
-    }
-
-    public void setYear(String year) {
-        this.year = year;
-    }
-
     public String getFuel() {
         return fuel;
     }
 
     public void setFuel(String fuel) {
         this.fuel = fuel;
-    }
-
-    public String getGrade() {
-        return grade;
-    }
-
-    public void setGrade(String grade) {
-        this.grade = grade;
     }
 
     public String getTransmission() {
@@ -116,20 +118,28 @@ public class CarVO {
         this.color = color;
     }
 
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+
+    public String getCc() {
+        return cc;
+    }
+
+    public void setCc(String cc) {
+        this.cc = cc;
+    }
+
     public String getKm() {
         return km;
     }
 
     public void setKm(String km) {
         this.km = km;
-    }
-
-    public String getPrice() {
-        return price;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
     }
 
     public String getSago() {
@@ -140,11 +150,38 @@ public class CarVO {
         this.sago = sago;
     }
 
-    public String getSail_explain() {
-        return sail_explain;
+    public String getPrice() {
+        return price;
     }
 
-    public void setSail_explain(String sail_explain) {
-        this.sail_explain = sail_explain;
+    public void setPrice(String price) {
+        this.price = price;
     }
+
+    public String getPricePredict() {
+        return pricePredict;
+    }
+
+    public void setPricePredict(String pricePredict) {
+        this.pricePredict = pricePredict;
+    }
+
+    public String getSaleExplain() {
+        return saleExplain;
+    }
+
+    public void setSaleExplain(String saleExplain) {
+        this.saleExplain = saleExplain;
+    }
+
+    @Override
+    public String toString() {
+        return "CarVO [saleNum=" + saleNum + ", userId=" + userId + ", carNumber=" + carNumber + ", brand=" + brand
+                + ", model=" + model + ", fuel=" + fuel + ", transmission=" + transmission + ", color=" + color
+                + ", year=" + year + ", cc=" + cc + ", km=" + km + ", sago=" + sago + ", price=" + price
+                + ", pricePredict=" + pricePredict + ", saleExplain=" + saleExplain + ", image=" + image + "]";
+    }
+
+
+
 }

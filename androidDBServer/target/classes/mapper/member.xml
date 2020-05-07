@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+
+	<select id="selectAll" resultType="member">
+		select * from member
+	</select>
+	
+	<select id="searchIdInKakao" resultType="member" parameterType="String">
+		select * from member where MEM_KAKAO_ID = #{kakaoNo}
+	</select>
+	
+	<insert id="signUp" parameterType="Map">
+		insert into member (MEM_KAKAO_ID, MEM_NAME, MEM_NICKNAME, MEM_BIRTH, MEM_GENDER, MEM_EMAIL, MEM_PHONENO) 
+		values (#{MEM_KAKAO_ID},#{MEM_NAME},#{MEM_NICKNAME},#{MEM_BIRTH},#{MEM_GENDER},#{MEM_EMAIL},#{MEM_PHONENO})
+	</insert>
+	<delete id="signDown" parameterType="String">
+		delete from MEMBER where MEM_KAKAO_ID = #{kakaoNo}
+	</delete>
+</mapper>

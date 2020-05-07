@@ -40,6 +40,7 @@ import multi.android.gotcha.Home;
 import multi.android.gotcha.MainActivity;
 import multi.android.gotcha.R;
 import multi.android.gotcha.member.login.MemberInfo;
+import multi.android.gotcha.sale.mysale_list;
 
 public class CommunityMainActivity extends AppCompatActivity{
     RecyclerView freeboard_listRecycle;
@@ -123,6 +124,7 @@ public class CommunityMainActivity extends AppCompatActivity{
                     intent.putExtra("board_num",list.get(position).getBoard_NUM());
                     intent.putExtra("board_content",list.get(position).getBoard_CONTENT());
                     intent.putExtra("board_title",list.get(position).getBoard_TITLE());
+                    intent.putExtra("image",list.get(position).getImage());//이미지 가져오기
                     intent.putExtra("Nickname",name);
                     startActivity(intent);
                 } else{
@@ -131,6 +133,7 @@ public class CommunityMainActivity extends AppCompatActivity{
                     intent.putExtra("board_num",list.get(position).getBoard_NUM());
                     intent.putExtra("board_content",list.get(position).getBoard_CONTENT());
                     intent.putExtra("board_title",list.get(position).getBoard_TITLE());
+                    intent.putExtra("image",list.get(position).getImage());//이미지 가져오기
                     intent.putExtra("Nickname",name);
                     startActivity(intent);
                 }
@@ -169,14 +172,10 @@ public class CommunityMainActivity extends AppCompatActivity{
                             transaction.addToBackStack("memberInfo");
                             transaction.commit();
                             mainLayout.closeDrawer(navigationView);
-                        } else if (id == R.id.item3) {
-
-                        } else if (id == R.id.item4) {
-
-                        } else if (id == R.id.item5) {
-
-                        } else {
-
+                        }  else if (id == R.id.item3) {
+                            Intent intent = new Intent(CommunityMainActivity.this, mysale_list.class);
+                            intent.putExtra("name", kakaoNo);
+                            startActivity(intent);
                         }
 
                         return false;
@@ -189,7 +188,7 @@ public class CommunityMainActivity extends AppCompatActivity{
         if (v.getId() == R.id.freeboard_listbtn) {
             //글쓰기 버튼을 눌렀을 때 게시글 번호와 닉네임을 넘겨줘야 글쓸 때 등록 가능
             Intent intent = new Intent(CommunityMainActivity.this, Freeboard_WriteActivity.class);
-            intent.putExtra("board_num","ㅎㅇ");//여기에 세션 유지한 아이디 넣기
+            intent.putExtra("name",name);//여기에 세션 유지한 아이디 넣기
             startActivityForResult(intent,RESULT_OK);
         }if (v.getId() == R.id.freeboard_listSearchbtn){
             if (freeboard_listallSearch.getText().toString().equals("")){
@@ -302,7 +301,7 @@ public class CommunityMainActivity extends AppCompatActivity{
                 count ++;
                 Log.d("msg","count ==="+count);
             }
-        }, 2000);
+        }, 500);
     }
     /*forward 메소드에 들어갈 조회구문 끝*/
 
@@ -319,7 +318,7 @@ public class CommunityMainActivity extends AppCompatActivity{
                         Toast.makeText(CommunityMainActivity.this, "첫 페이지 입니다.", Toast.LENGTH_SHORT).show();
                         progressBar.setVisibility(View.GONE);
                     }
-                }, 2000);
+                }, 500);
                 k = 19;
                 count = 0;
                 lastPage = 0;
@@ -374,7 +373,7 @@ public class CommunityMainActivity extends AppCompatActivity{
                 count --;
                 Log.d("msg","count ==="+count);
             }
-        }, 2000);
+        }, 500);
     }
     /*backward 메소드에 들어갈 조회구문 끝*/
 
@@ -475,12 +474,13 @@ public class CommunityMainActivity extends AppCompatActivity{
                 /*조회수 증가 끝*/
 
                 /*게시판 상세보기 시작*/
-                if (list.get(position).getMem_NICKNAME().equals("지민재")){//지민재 자리에 세션...
+                if (list.get(position).getMem_NICKNAME().equals(name)){
                     //나의 게시판 상세보기
                     Intent intent = new Intent(CommunityMainActivity.this,Freeboard_MyDetailActivity.class);
                     intent.putExtra("board_num",list.get(position).getBoard_NUM());
                     intent.putExtra("board_content",list.get(position).getBoard_CONTENT());
                     intent.putExtra("board_title",list.get(position).getBoard_TITLE());
+                    intent.putExtra("image",list.get(position).getImage());//이미지 가져오기
                     startActivity(intent);
                 } else{
                     //게시판 상세보기
@@ -488,6 +488,7 @@ public class CommunityMainActivity extends AppCompatActivity{
                     intent.putExtra("board_num",list.get(position).getBoard_NUM());
                     intent.putExtra("board_content",list.get(position).getBoard_CONTENT());
                     intent.putExtra("board_title",list.get(position).getBoard_TITLE());
+                    intent.putExtra("image",list.get(position).getImage());//이미지 가져오기
                     startActivity(intent);
                 }
                 /*게시판 상세보기 끝*/

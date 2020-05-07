@@ -36,7 +36,7 @@
         <activity android:name=".Community.Freeboard_WriteActivity"></activity>
         <activity android:name=".Community.CommunityMainActivity"></activity>
         <!-- 판매부분 액티비티-->
-        <activity android:name=".sale.mysale_list"/>
+        <activity android:name=".sale.mysale_list" />
         <activity android:name=".sale.model_bmw" />
         <activity android:name=".sale.model_bentz" />
         <activity android:name=".sale.model_kia" />
@@ -50,6 +50,7 @@
         <!-- 검색부분 액티비티-->
         <activity android:name=".search.searchpage" />
         <activity android:name=".search.searchpage2" />
+        <activity android:name=".search.ReadActivity" />
         <!-- 로그인, 메인 액티비티-->
         <activity android:name=".MainActivity" />
         <activity android:name=".member.login.LoginActivity">

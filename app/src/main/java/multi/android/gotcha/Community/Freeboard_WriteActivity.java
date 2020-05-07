@@ -97,29 +97,32 @@ public class Freeboard_WriteActivity extends AppCompatActivity {
         }
 
         Intent intent = getIntent();
-
+        final String name = intent.getStringExtra("name");
         freeboard_writeSaveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 /*DB연동 시작*/
                 Map<String, String> map = new HashMap<String, String>();
                 map.put("method", "CommunityWrite");
-                map.put("mem_NICKNAME","지민재");//세션 유지한 아이디나 닉데임 등 써주기
+                map.put("mem_NICKNAME",name);//세션 유지한 아이디나 닉데임 등 써주기
                 map.put("board_TITLE",freeboard_writeTitle.getText().toString());
                 map.put("board_CONTENT",freeboard_writeContent.getText().toString());
                 if(list!=null) {
                     map.put("image_List", list.get(0).toString());
                 }
-                Task networkTask = new Task();
-                networkTask.execute(map);
+
 
                 Map<String, String> map2 = new HashMap<String, String>();
                 map2.put("method", "fileCommUpload");
                 map2.put("length", filename.size()+"");
                 for(int i=0; i<filename.size();i++){
                     map2.put("filename"+i,filename.get(i));
+                    map.put("filename"+i,filename.get(i));
                     Log.d("filename","filename"+i+"    "+filename.get(i));
                 }
+
+                Task networkTask = new Task();
+                networkTask.execute(map);
                 Task networkTask2 = new Task();
                 networkTask2.execute(map2);
 
@@ -189,8 +192,8 @@ public class Freeboard_WriteActivity extends AppCompatActivity {
 
         if (requestCode == GET_GALLERY_IMAGE && resultCode == RESULT_OK && data != null) {
             //갤러리에서 이미지를 가져올 때 실행되는 부분
+            list = new ArrayList<Uri>();
             if (data.getClipData() !=null){
-                list = new ArrayList<Uri>();
                 //갤러리에서 이미지를 여러개 선택했을 때
                 count = data.getClipData().getItemCount();//내가 선택한 사진의 개수
                 LinearLayoutManager manager = new LinearLayoutManager(getApplicationContext());

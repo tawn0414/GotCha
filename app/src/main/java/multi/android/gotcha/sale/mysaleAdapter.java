@@ -1,6 +1,8 @@
 package multi.android.gotcha.sale;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.HashMap;
 import java.util.List;
@@ -17,6 +20,7 @@ import java.util.Map;
 import multi.android.gotcha.DB.Task;
 import multi.android.gotcha.DB.mysaleVO;
 import multi.android.gotcha.Home;
+import multi.android.gotcha.MainActivity;
 import multi.android.gotcha.R;
 
 public class mysaleAdapter extends ArrayAdapter<mysaleVO> {
@@ -60,13 +64,27 @@ public class mysaleAdapter extends ArrayAdapter<mysaleVO> {
         viewHolder.btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Map<String, String> map = new HashMap<String, String>();
-                map.put("method", "myListDelete");
-                map.put("carNumber",mysaleItems.getCarNumber());
-                Task myListDelete = new Task();
-                myListDelete.execute(map);
-                Intent intent = new Intent(getContext(), Home.class);
-                getContext().startActivity(intent);
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(getContext(),R.style.Theme_AppCompat_Light_Dialog);
+                alertDialog.setTitle(mysaleItems.getCarNumber()).setMessage(" -> 삭제하기").setCancelable(
+                        true).setPositiveButton("확인",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Map<String, String> map = new HashMap<String, String>();
+                                map.put("method", "myListDelete");
+                                map.put("carNumber",mysaleItems.getCarNumber());
+                                Task myListDelete = new Task();
+                                myListDelete.execute(map);
+                                Intent intent = new Intent(getContext(), MainActivity.class);
+                                getContext().startActivity(intent);
+                            }
+                        }).setNeutralButton("취소",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialogInterface, int id) {
+                                Toast.makeText(getContext(),"취소",Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                AlertDialog alert = alertDialog.create();
+                alert.show();
             }
         });
         return rowView;

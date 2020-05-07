@@ -34,6 +34,7 @@ import multi.android.gotcha.DB.DBHandler;
 import multi.android.gotcha.DB.Task;
 import multi.android.gotcha.MainActivity;
 import multi.android.gotcha.R;
+import multi.android.gotcha.member.login.LoginActivity;
 
 public class car_regist extends AppCompatActivity {
     TabLayout tabLayout;
@@ -225,6 +226,8 @@ public class car_regist extends AppCompatActivity {
                     Toast.makeText(car_regist.this, "필수항목 입력해주세요", Toast.LENGTH_SHORT).show();
                     car_info.kmInfo.setBackgroundResource(R.drawable.border_red);
                     car_info.kmInfo.requestFocus();
+                } else if (sago.equals("")) {
+                    Toast.makeText(car_regist.this, "필수항목 입력해주세요", Toast.LENGTH_SHORT).show();
                 } else {
                     viewPager.setCurrentItem(1);
                 }
@@ -267,13 +270,14 @@ public class car_regist extends AppCompatActivity {
                 }
                 break;
             case R.id.finish:
-                finalCheck = true;
+                finalCheck = false;
                 if (!brand.equals("") && !model.equals("") && !fuel.equals("") && !transmission.equals("") && !car_price.price.equals("") && !car_price.detail.equals("") && !color.equals("") && !car_info.year.equals("") && !car_info.displacement.equals("") && !car_info.km.equals("")) {
 
                     if (!car_pictures.pic1.equals("")) {
                         if (!car_pictures.pic2.equals("")) {
                             if (!car_pictures.pic3.equals("")) {
                                 if (!car_pictures.pic4.equals("")) {
+                                    finalCheck=true;
                                 }
                             }
                         }
@@ -321,7 +325,7 @@ public class car_regist extends AppCompatActivity {
                         Task networkTask = new Task();
                         networkTask.execute(map2);
                     }
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
 
                     startActivity(intent);
                     finishAffinity();

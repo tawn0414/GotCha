@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 
 import java.util.Arrays;
@@ -39,6 +40,7 @@ public class Freeboard_MyDetailActivity extends AppCompatActivity {
     CommentAdapter adapter;
     RecyclerView freeboard_mydetailComment;
     String Nickname;
+    String image;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,12 +61,14 @@ public class Freeboard_MyDetailActivity extends AppCompatActivity {
         String board_content = intent.getStringExtra("board_content");
         String board_title = intent.getStringExtra("board_title");
         Nickname = intent.getStringExtra("Nickname");
+        image = intent.getStringExtra("image");
         freeboard_mydetailContent.setText(board_content);
         freeboard_mydetailTitle.setText(board_title);
 
         setReplylist();
         setAdapter();
-
+        String link = "http://" + getString(R.string.ip) + ":8088/DBServer/images/"+ image;
+        Glide.with(this).load(link).into(freeboard_mydetailImage);
 
         freeboard_mylistMyDeleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,7 +100,7 @@ public class Freeboard_MyDetailActivity extends AppCompatActivity {
                     Map<String, String> map = new HashMap<String, String>();
                     map.put("method", "ReplyWrite");
                     map.put("board_NUM", board_num);
-                    map.put("mem_NICKNAME", Nickname);
+                    map.put("mEM_NICKNAME", Nickname);
                     map.put("reply_CONTENT", str);
                     Task networkTask = new Task();
                     networkTask.execute(map);

@@ -24,8 +24,10 @@
     </LinearLayout>
     <ImageView
         android:id="@+id/freeboard_detailImage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_margin="20dp"
+        android:layout_gravity="center" />
     <TextView
         android:id="@+id/freeboard_detailContent"
         android:layout_width="match_parent"
