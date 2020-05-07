@@ -13,16 +13,4 @@
         android:id="@+id/item3"
         android:icon="@drawable/ic_backup_black_24dp"
         android:title="MY 업로드" />
-    <item
-        android:id="@+id/item4"
-        android:icon="@drawable/ic_local_grocery_store_black_24dp"
-        android:title="MY 구매내역" />
-    <item
-        android:id="@+id/item5"
-        android:icon="@drawable/ic_grade_black_24dp"
-        android:title="찜한 차량" />
-    <item
-        android:id="@+id/item6"
-        android:icon="@drawable/ic_find_in_page_black_24dp"
-        android:title="최근검색" />
 </menu>

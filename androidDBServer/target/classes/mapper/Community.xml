@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="community">
+	<!-- 게시판 전체 조회 처음 --><!-- 성공, 무한 스크롤 할 때 between 1 and 5이거 where절에 추가해주기-->
+	<select id="SelectCommunity" resultType="community">
+		select c.BOARD_CONTENT, c.BOARD_NUM,c.BOARD_TITLE, c.MEM_NICKNAME, c.BOARD_REGDATE, c.BOARD_HIT, nvl(count(r.reply_num),'0') REPLYNUM
+		from community c, reply r
+		where r.board_num(+) = c.board_num and c.board_num between 1 and 9
+		group by c.BOARD_TITLE, c.MEM_NICKNAME, c.BOARD_REGDATE, c.BOARD_HIT, c.BOARD_NUM, c.BOARD_CONTENT
+		order by c.board_num asc
+	</select>
+	<!-- 게시판 전체 조회 --><!-- 성공 -->
+	<!-- <select id="SelectCommunity" resultType="community">
+		select c.BOARD_CONTENT, c.BOARD_NUM,c.BOARD_TITLE, c.MEM_NICKNAME, c.BOARD_REGDATE, c.BOARD_HIT, nvl(count(r.reply_num),'0')
+		from community c, reply r
+		where r.board_num(+) = c.board_num
+		group by c.BOARD_TITLE, c.MEM_NICKNAME, c.BOARD_REGDATE, c.BOARD_HIT, c.BOARD_NUM, c.board_content
+		order by c.board_num asc
+	</select> -->
+	<!-- 제목으로 게시판 조회 --><!-- 성공 -->
+	<select id="SelectCommunityByTitle" resultType="community" parameterType="String">
+		select c.BOARD_CONTENT, c.BOARD_NUM,c.BOARD_TITLE, c.MEM_NICKNAME, c.BOARD_REGDATE, c.BOARD_HIT, nvl(count(r.reply_num),'0') REPLYNUM
+		from community c, reply r
+		where r.board_num(+) = c.board_num and c.BOARD_TITLE Like '%' || #{BOARD_TITLE} || '%'
+		group by c.BOARD_TITLE, c.MEM_NICKNAME, c.BOARD_REGDATE, c.BOARD_HIT, c.BOARD_NUM, c.board_content
+		order by c.board_num asc
+	</select>
+	<!-- 작성자로 게시판 조회 --><!-- 성공 -->
+	<select id="SelectCommunityByNickname" resultType="community" parameterType="String">
+		select c.BOARD_CONTENT, c.BOARD_NUM,c.BOARD_TITLE, c.MEM_NICKNAME, c.BOARD_REGDATE, c.BOARD_HIT, nvl(count(r.reply_num),'0') REPLYNUM
+		from community c, reply r
+		where r.board_num(+) = c.board_num and c.MEM_NICKNAME Like '%' || #{MEM_NICKNAME} || '%' 
+		group by c.BOARD_TITLE, c.MEM_NICKNAME, c.BOARD_REGDATE, c.BOARD_HIT, c.BOARD_NUM, c.board_content
+		order by c.board_num asc
+	</select>
+	<!-- 내용으로 게시판 조회 --><!-- 성공 -->
+	<select id="SelectCommunityByContent" resultType="community" parameterType="String">
+		select c.BOARD_CONTENT, c.BOARD_NUM,c.BOARD_TITLE, c.MEM_NICKNAME, c.BOARD_REGDATE, c.BOARD_HIT, nvl(count(r.reply_num),'0') REPLYNUM
+		from community c, reply r
+		where r.board_num(+) = c.board_num and c.BOARD_CONTENT Like '%' || #{BOARD_CONTENT} || '%'
+		group by c.BOARD_TITLE, c.MEM_NICKNAME, c.BOARD_REGDATE, c.BOARD_HIT, c.BOARD_NUM, c.board_content
+		order by c.board_num asc
+	</select>
+	<!-- 게시판 무한 스크롤 조회 --><!-- 실패  보류 -->
+	<select id="SelectCommunityNext" resultType="community" parameterType="Map">
+		select c.BOARD_NUM,c.BOARD_TITLE, c.MEM_NICKNAME, c.BOARD_REGDATE, c.BOARD_HIT, nvl(count(r.reply_num),'0') REPLYNUM
+		from community c, reply r
+		where r.bOARD_NUM(+) = c.BOARD_NUM and c.BOARD_NUM between #{num1} and #{num2}
+		group by c.BOARD_TITLE, c.MEM_NICKNAME, c.BOARD_REGDATE, c.BOARD_HIT, c.BOARD_NUM
+		order by c.BOARD_NUM asc
+	</select>
+	
+	<!-- 게시글 등록 --><!-- 성공 -->
+	<insert id="CommunityWrite" parameterType="Map">
+		insert into community (BOARD_NUM, MEM_NICKNAME, BOARD_REGDATE, BOARD_TITLE,BOARD_HIT, BOARD_CONTENT)
+		values (BOARD_NUM_SEQ.NEXTVAL,#{MEM_NICKNAME},sysdate,#{BOARD_TITLE},0, #{BOARD_CONTENT})
+	</insert>
+	
+	<!-- 게시글 삭제 --><!-- 성공 -->
+	<delete id="CommunityDelete" parameterType="String">
+		delete from community where BOARD_NUM = #{BOARD_NUM}
+	</delete>
+	
+	<!-- 조회수 1씩 증가 --><!-- 성공 -->
+	<update id="HitUpdate" parameterType="String">
+		update community
+		set BOARD_HIT = BOARD_HIT +1
+		where BOARD_NUM=#{BOARD_NUM}
+	</update>
+</mapper>

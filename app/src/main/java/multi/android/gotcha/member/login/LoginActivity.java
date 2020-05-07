@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.telephony.SmsManager;
@@ -286,6 +287,10 @@ public class LoginActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         Button btn = signUpFragment1.getActivity().findViewById(R.id.btnAuthKeyNumber);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            signUpFragment1.getActivity().findViewById(R.id.btnSendSMS).setBackgroundColor(getColor(R.color.colorWhite));
+            btn.setBackgroundColor(getColor(R.color.colorBlue));
+        }
         btn.setEnabled(true);
     }
 

@@ -8,20 +8,31 @@ public class CommunityVO {
 	private int board_HIT;
 	private int replynum;
 	private String board_CONTENT;
-	private String board_IMAGE;
+	private String image;
 
 	public CommunityVO() {
 	}
 
-	public CommunityVO(String board_NUM, String mem_NICKNAME, String board_REGDATE, String board_TITLE, int board_HIT, int replynum, String board_CONTENT, String board_IMAGE) {
-		this.board_NUM = board_NUM;
-		this.mem_NICKNAME = mem_NICKNAME;
-		this.board_REGDATE = board_REGDATE;
-		this.board_TITLE = board_TITLE;
-		this.board_HIT = board_HIT;
-		this.replynum = replynum;
-		this.board_CONTENT = board_CONTENT;
-		this.board_IMAGE = board_IMAGE;
+	@Override
+	public String toString() {
+		return "CommunityVO{" +
+				"board_NUM='" + board_NUM + '\'' +
+				", mem_NICKNAME='" + mem_NICKNAME + '\'' +
+				", board_REGDATE='" + board_REGDATE + '\'' +
+				", board_TITLE='" + board_TITLE + '\'' +
+				", board_HIT=" + board_HIT +
+				", replynum=" + replynum +
+				", board_CONTENT='" + board_CONTENT + '\'' +
+				", image='" + image + '\'' +
+				'}';
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 	public String getBoard_NUM() {
@@ -52,10 +63,6 @@ public class CommunityVO {
 		return board_CONTENT;
 	}
 
-	public String getBoard_IMAGE() {
-		return board_IMAGE;
-	}
-
 	public void setBoard_NUM(String board_NUM) {
 		this.board_NUM = board_NUM;
 	}
@@ -84,21 +91,4 @@ public class CommunityVO {
 		this.board_CONTENT = board_CONTENT;
 	}
 
-	public void setBoard_IMAGE(String board_IMAGE) {
-		this.board_IMAGE = board_IMAGE;
-	}
-
-	@Override
-	public String toString() {
-		return "CommunityVO{" +
-				"board_NUM='" + board_NUM + '\'' +
-				", mem_NICKNAME='" + mem_NICKNAME + '\'' +
-				", board_REGDATE='" + board_REGDATE + '\'' +
-				", board_TITLE='" + board_TITLE + '\'' +
-				", board_HIT=" + board_HIT +
-				", replynum=" + replynum +
-				", board_CONTENT='" + board_CONTENT + '\'' +
-				", board_IMAGE='" + board_IMAGE + '\'' +
-				'}';
-	}
 }

@@ -30,11 +30,12 @@
                 android:singleLine="true" />
 
             <Button
+                android:id="@+id/btnSendSMS"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:background="@drawable/border2"
+                android:background="@color/colorBlue"
                 android:onClick="clickSendSMS"
                 android:text="인증번호 받기" />
         </LinearLayout>
@@ -63,7 +64,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:background="@drawable/border3"
+                android:background="@color/colorWhite"
                 android:enabled="false"
                 android:onClick="clickCheckAuth"
                 android:text="인증번호 확인" />

@@ -12,6 +12,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -53,6 +55,7 @@ public class CarAdapter extends ArrayAdapter<CarVO> {
 
 
         if(carVO!=null) {
+            ImageView imageView = itemView.myImg;
             TextView brandView = itemView.brandView;
             TextView modelView = itemView.modelView;
             TextView fuelView = itemView.fuelView;
@@ -66,7 +69,8 @@ public class CarAdapter extends ArrayAdapter<CarVO> {
             colorView.setText(carVO.getColor());
             yearView.setText(carVO.getYear());
             priceView.setText(carVO.getPrice());
-
+            String link = "http://" + context.getString(R.string.ip) + ":8088/DBServer/images/"+carVO.getImage();
+            Glide.with(getContext()).load(link).into(imageView);
 
 
             MyMemento state = userStateValue.get(position);

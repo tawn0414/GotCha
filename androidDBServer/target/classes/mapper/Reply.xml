@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="reply">
+	
+	<!-- 댓글 출력 --><!-- 성공 -->
+	<select id="ReplyList" resultType="reply" parameterType="String">
+		select *
+		from reply
+		where bOARD_NUM = #{bOARD_NUM}
+		order by REPLY_NUM asc
+	</select>
+	<!-- 댓글 등록 --><!-- 성공 -->
+	<insert id="ReplyWrite" parameterType="Map">
+		insert into reply (rEPLY_NUM, mEM_NICKNAME, rEPLY_REGDATE, rEPLY_CONTENT, bOARD_NUM)
+		values (REPLY_NUM_SEQ.NEXTVAL,#{mEM_NICKNAME},sysdate,#{rEPLY_CONTENT},#{bOARD_NUM})
+	</insert>
+	
+	<!-- 댓글 삭제 --><!-- 성공 -->
+	<delete id="ReplyDelete" parameterType="String">
+		delete from reply where bOARD_NUM = #{bOARD_NUM}
+	</delete>
+</mapper>

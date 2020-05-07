@@ -112,11 +112,7 @@ public class MainActivity extends AppCompatActivity {
                             Intent intent = new Intent(MainActivity.this, mysale_list.class);
                             intent.putExtra("name", kakaoNo);
                             startActivity(intent);
-                        } else if (id == R.id.item4) {
-
-                        } else if (id == R.id.item5) {
-
-                        } else {
+                        }  else {
 
                         }
 
@@ -200,6 +196,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickBuy(View v) {
         Intent intent = new Intent(this, searchpage.class);
+        intent.putExtra("strProfile",profile);
         startActivity(intent);
     }
 

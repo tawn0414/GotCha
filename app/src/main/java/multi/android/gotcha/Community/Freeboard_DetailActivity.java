@@ -3,6 +3,7 @@ package multi.android.gotcha.Community;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 
 import java.util.Arrays;
@@ -38,6 +40,7 @@ public class Freeboard_DetailActivity extends AppCompatActivity {
     /*데이터들*/
     String board_num = null;
     String Nickname;
+    String image;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,12 +63,15 @@ public class Freeboard_DetailActivity extends AppCompatActivity {
         String board_content = intent.getStringExtra("board_content");
         String board_title = intent.getStringExtra("board_title");
         Nickname = intent.getStringExtra("Nickname");
+        image = intent.getStringExtra("image");
         freeboard_detailContent.setText(board_content);
         freeboard_detailTitle.setText(board_title);
 
         setReplylist();
         setAdapter();
-
+        String link = "http://" + getString(R.string.ip) + ":8088/DBServer/images/"+ image;
+        Glide.with(this).load(link).into(freeboard_detailImage);
+        Log.d("fileupload", image);
 
         freeboard_detailCommentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,7 +86,7 @@ public class Freeboard_DetailActivity extends AppCompatActivity {
                     Map<String, String> map = new HashMap<String, String>();
                     map.put("method", "ReplyWrite");
                     map.put("board_NUM", board_num);
-                    map.put("mem_NICKNAME", Nickname);
+                    map.put("mEM_NICKNAME", Nickname);
                     map.put("reply_CONTENT", str);
                     Task networkTask = new Task();
                     networkTask.execute(map);

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sale">
+	<insert id="carInsert" parameterType="Map">
+		insert into car_info (saleNum,userId,carNumber,brand,model,fuel,transmission,color,year,cc,km,sago,price,salePredict,saleExplain) 
+		values (seq_sale.nextval,#{userId},#{carNumber},#{brand},#{model},#{fuel},#{transmission},#{color},#{year},#{cc},#{km},#{sago},#{price},#{salePredict},#{saleExplain})
+	</insert>
+	<select id="mySaleList" parameterType="String" resultType="sale">
+		select carNumber,brand,model from car_info where userId = #{userId}
+	</select>
+	<delete id="mySaleDelete" parameterType="String">
+		delete from car_info where carNumber = #{carNumber}
+	</delete>
+</mapper>
